@@ -1,12 +1,20 @@
-package product;
+package modelo;
 
 public abstract class Produto {
 	
+	protected int ID;
 	protected String nome;
 	protected String marca;
 	protected double preco;
 	protected String descricao;
 	
+	
+	public int getID() {
+		return ID;
+	}
+	public void setID(int ID) {
+		this.ID = ID;
+	}
 	public String getNome() {
 		return nome;
 	}

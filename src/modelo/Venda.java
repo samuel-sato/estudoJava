@@ -1,10 +1,7 @@
-package entities;
+package modelo;
 
 import java.time.LocalDateTime;
 
-//import java.util.Date;
-
-import product.Produto;
 import entities.Estoque;
 
 public class Venda {

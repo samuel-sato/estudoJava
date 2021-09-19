@@ -1,6 +1,6 @@
 package application;
-import product.Perfume;
-import entities.Venda;
+import modelo.Perfume;
+import modelo.Venda;
 
 import javax.swing.*;
 
@@ -53,14 +53,25 @@ public class Program {
 
 		JFrame frame = new JFrame("SISTEMA LOJA");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 400);
 		frame.setLayout(null);
+		frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
 		
+		JButton b = new JButton("CLICK aqui!");
+		//frame.add(b);
+		b.setBounds(80, 10, 120, 30);
 		
-		JLabel label = new JLabel("Fala meu Peixe. Escolha uma opção", JLabel.CENTER);
-		label.setBounds(20, 30, 360, 40);
+		JLabel l0,l1, l2, l3, l4, l5, l6;
+		l0 = new JLabel("Menu Principal");
+		l1 = new JLabel("VENDA");
+		l2 = new JLabel("CLIENTE");
+		l3 = new JLabel("BUSCA");
+		l4 = new JLabel("CATALOGO");
+		l5 = new JLabel("RELATÓRIOS");
+		l6 = new JLabel("ESTOQUE");
 		
-		frame.add(label);
+		l0.setBounds(50,50, 500, 50);
+		
+		frame.add(l0);
 		frame.setVisible(true);
 		
 		

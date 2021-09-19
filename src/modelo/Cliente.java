@@ -1,4 +1,4 @@
-package entities;
+package modelo;
 
 public class Cliente {
 

@@ -1,4 +1,4 @@
-package product;
+package modelo;
 
 public class Perfume extends Produto{
 	private int volume;

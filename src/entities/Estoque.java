@@ -1,6 +1,6 @@
 package entities;
 
-import product.Produto;
+import modelo.Produto;
 
 
 public final class Estoque {
