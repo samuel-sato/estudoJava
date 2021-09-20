@@ -47,6 +47,5 @@ public abstract class Produto {
 		}else {
 			return false;
 		}
-		
 	}
 }

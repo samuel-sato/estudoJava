@@ -1,10 +1,9 @@
 package application;
 import modelo.Perfume;
 import modelo.Venda;
-
 import javax.swing.*;
-
 import entities.Estoque;
+import entities.ControleProduto;
 
 
 public class Program {
@@ -50,31 +49,12 @@ public class Program {
 		System.out.println();
 		v1.listaProdutos();
 		
-
-		JFrame frame = new JFrame("SISTEMA LOJA");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(null);
-		frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
+		ControleProduto teste = new ControleProduto();
 		
-		JButton b = new JButton("CLICK aqui!");
-		//frame.add(b);
-		b.setBounds(80, 10, 120, 30);
-		
-		JLabel l0,l1, l2, l3, l4, l5, l6;
-		l0 = new JLabel("Menu Principal");
-		l1 = new JLabel("VENDA");
-		l2 = new JLabel("CLIENTE");
-		l3 = new JLabel("BUSCA");
-		l4 = new JLabel("CATALOGO");
-		l5 = new JLabel("RELATÓRIOS");
-		l6 = new JLabel("ESTOQUE");
-		
-		l0.setBounds(50,50, 500, 50);
-		
-		frame.add(l0);
-		frame.setVisible(true);
-		
-		
-		
+		teste.adicionar(p1);
+		teste.adicionar(p2);
+		teste.adicionar(p3);
+		teste.adicionar(p4);
+		teste.exibir();
 	}
 }
