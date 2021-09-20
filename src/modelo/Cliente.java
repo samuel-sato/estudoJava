@@ -47,7 +47,15 @@ public class Cliente {
 		CPF = cPF;
 		CEP = cEP;
 	}
-	
+	@Override
+	public boolean equals(Object c) {
+		
+		if(this.nome == ((Cliente) c).getNome() && this.CPF == ((Cliente) c).getCPF()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 	
 }

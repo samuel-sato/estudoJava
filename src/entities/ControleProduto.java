@@ -1,21 +1,23 @@
 package entities;
-import modelo.Perfume;
+
 import modelo.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
 public class ControleProduto {
-	private Produto[] listaProdutos = new Produto[50];
+	//private Produto[] listaProdutos = new Produto[50];
 	private int nProduto=0;
 	private int aux=0;
 	
-	//Perfume p1 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+	public ControleProduto() {
+		super();
+	}
 	//usando lista
 	List<Produto> lista = new ArrayList<Produto>();
 	
-	
+	//Lista sem repetições
 	public void adicionar(Produto p) {
 		this.aux=0;
 		for (Produto x: this.lista) {
@@ -38,6 +40,7 @@ public class ControleProduto {
 	}
 	public void excluir(int i) {
 		lista.remove(i);
+		this.nProduto--;
 	}
 	
 	public void exibir() {
@@ -45,7 +48,6 @@ public class ControleProduto {
 			System.out.println(x.getNome());
 		}
 	}
-	
 	
 	
 	
@@ -79,9 +81,8 @@ public class ControleProduto {
 	}
 	*/
 
-	public ControleProduto() {
-		super();
+	public int getnProduto() {
+		return nProduto;
 	}
-	
 	
 }
