@@ -3,9 +3,9 @@ package entities;
 import modelo.Produto;
 
 
-public final class Estoque {
-	private int[] quantidade = new int[40];
-	private Produto[] produto = new Produto[40];
+public class Estoque {
+	private static int[] quantidade = new int[40];
+	public static Produto[] produto = new Produto[40];
 	private int posicao=0; 
 	
 	//Adiciona apenas uma unidade ao estoque
@@ -21,9 +21,9 @@ public final class Estoque {
 			
 			for (int i=0; i<=this.posicao; i++) {
 				
-				if(this.produto[i].equals(p)) {
+				if(Estoque.produto[i].equals(p)) {
 					
-					this.quantidade[i]++;
+					Estoque.quantidade[i]++;
 					
 					System.out.println("PRODUTOS IGUAIS");
 					aux++;
@@ -32,8 +32,8 @@ public final class Estoque {
 			}
 			
 			if (aux==0) {
-				this.produto[this.posicao]=p;
-				this.quantidade[this.posicao]++;
+				Estoque.produto[this.posicao]=p;
+				Estoque.quantidade[this.posicao]++;
 				this.posicao++;
 			}
 		}

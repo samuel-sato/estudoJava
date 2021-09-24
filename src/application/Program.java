@@ -9,9 +9,10 @@ import view.MenuInicial;
 
 
 public class Program {
-	public static void main(String[] args) {
+	
+	//public static void main(String[] args) {
 		
-		System.out.println("Tá rodando! ");
+		//System.out.println("Tá rodando! ");
 		/*
 		Perfume p1 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p2 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
@@ -21,7 +22,9 @@ public class Program {
 		Estoque e1 = new Estoque();
 		Venda v1 = new Venda();
 		*/
-		MenuInicial menu = new MenuInicial();
+		//MenuInicial menu = new MenuInicial();
+		
 		//TelaProduto prod = new TelaProduto(); 
-	}
+	//}
+	
 }
