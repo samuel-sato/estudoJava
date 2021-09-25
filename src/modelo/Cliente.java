@@ -44,8 +44,8 @@ public class Cliente {
 		this.nome = nome;
 		this.telefone = telefone;
 		this.email = email;
-		CPF = cPF;
-		CEP = cEP;
+		this.CPF = cPF;
+		this.CEP = cEP;
 	}
 	@Override
 	public boolean equals(Object c) {

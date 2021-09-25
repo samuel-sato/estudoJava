@@ -1,6 +1,6 @@
 package view;
 
-import modelo.Produto;
+//import modelo.Produto;
 import javax.swing.*;
 
 import entities.Estoque;
@@ -11,7 +11,7 @@ public class TelaProduto {
 	private static JLabel titulo = new JLabel("Lista de Produtos");
 	private static JButton cadastrar = new JButton("Cadastrar");
 	
-	private static Produto[] listaProduto = new Produto[50];
+	//private static Produto[] listaProduto = new Produto[50];
 	private static JList lista = new JList(Estoque.produto);
 	
 	public TelaProduto() {
