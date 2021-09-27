@@ -7,43 +7,43 @@ import modelo.Cliente;
 
 public class ControleCliente {
 	//private Cliente[] c;
-	private int nCliente;
-	private int aux=0;
+	private static int nCliente;
+	private static int aux=0;
 	
 	public static List <Cliente> listaCliente = new ArrayList<Cliente>();
 		
 	//Lista sem repetições
-	public void adicionar(Cliente c) {
-		this.aux=0;
+	public static void adicionar(Cliente c) {
+		aux=0;
 		for (Cliente x: ControleCliente.listaCliente) {
 			if (x.equals(c)) {
 				System.out.println("Cliente já adicionado");
 				
-				this.aux++;
+				aux++;
 			}
 		} 
-		if(this.aux==0){
+		if(aux==0){
 			listaCliente.add(c);
 			
 			System.out.println("cliente adicionado");
-			this.nCliente++;
+			nCliente++;
 		}
 	}
-	public void editar(int pos, Cliente c) {
+	public static void editar(int pos, Cliente c) {
 		listaCliente.remove(pos);
 		
 		listaCliente.add(pos, c);
 		
 		System.out.println("cliente alterado! ");
 	}
-	public void excluir(int i) {
+	public static void excluir(int i) {
 		listaCliente.remove(i);
 		
-		this.nCliente--;
+		nCliente--;
 	}
 	
 	//alterar exibir 
-	public void exibir() {
+	public static void exibir() {
 		for (Cliente x: ControleCliente.listaCliente) {
 			System.out.println(x.getNome());
 		}

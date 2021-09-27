@@ -5,10 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import modelo.Cliente;
+import modelo.Creme;
 import modelo.Perfume;
 import entities.ControleCliente;
+import entities.ControleProduto;
 import entities.Estoque;
-//import controle.*;
 
 
 public class MenuInicial implements ActionListener{
@@ -65,6 +66,7 @@ public class MenuInicial implements ActionListener{
 		Perfume p2 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p3 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p4 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+		Creme p5 = new Creme("creme", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
 		
 		Estoque e = new Estoque();
 		e.adicionar(p1);
@@ -82,20 +84,25 @@ public class MenuInicial implements ActionListener{
 		Cliente c9 = new Cliente("sato3", "123456789", "sam@gmail.com", "84584", "1245213425");
 		Cliente c0 = new Cliente("sato3", "123456789", "sam@gmail.com", "7457457", "1245213425");
 		
-		ControleCliente controle = new ControleCliente();
-		controle.adicionar(c1);
-		controle.adicionar(c2);
-		controle.adicionar(c3);
-		controle.adicionar(c4);
-		controle.adicionar(c5);
-		controle.adicionar(c6);
-		controle.adicionar(c7);
-		controle.adicionar(c8);
-		controle.adicionar(c9);
-		controle.adicionar(c0);
+		//ControleCliente controle = new ControleCliente();
 		
+		ControleCliente.adicionar(c1);
+		ControleCliente.adicionar(c2);
+		ControleCliente.adicionar(c3);
+		ControleCliente.adicionar(c4);
+		ControleCliente.adicionar(c5);
+		ControleCliente.adicionar(c6);
+		ControleCliente.adicionar(c7);
+		ControleCliente.adicionar(c8);
+		ControleCliente.adicionar(c9);
+		ControleCliente.adicionar(c0);
 		
-		controle.exibir();
+		ControleProduto.adicionar(p1);
+		ControleProduto.adicionar(p2);
+		ControleProduto.adicionar(p3);
+		ControleProduto.adicionar(p4);
+		ControleProduto.adicionar(p5);
+		
 		System.out.println();
 	}
 	
@@ -108,7 +115,6 @@ public class MenuInicial implements ActionListener{
 		}
 		if(src == produto) {
 			new TelaProduto();
-			System.out.println("bbbbbb");
 		}
 	}
 }

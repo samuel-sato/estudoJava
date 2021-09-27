@@ -19,13 +19,13 @@ public class Dado {
 	}
 	
 	public static List<String> nomeProduto (List<Produto> lt) {
-		List<String> nome = new ArrayList<String>();
+		List<String> nome1 = new ArrayList<String>();
 		
-		for (Cliente x: ControleCliente.listaCliente) {
-			nome.add(x.getNome());
+		for (Produto x: ControleProduto.lista) {
+			nome1.add(x.getNome());
 			System.out.println(x.getNome());
 		}
-		return nome;
+		return nome1;
 	}
 	
 }

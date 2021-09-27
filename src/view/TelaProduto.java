@@ -1,31 +1,105 @@
 package view;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 //import modelo.Produto;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import entities.ControleCliente;
+import entities.ControleProduto;
+import entities.Dado;
 import entities.Estoque;
 
-public class TelaProduto {
+public class TelaProduto implements ActionListener, ListSelectionListener{
 
-	private static JFrame frame = new JFrame("Produto");
-	private static JLabel titulo = new JLabel("Lista de Produtos");
-	private static JButton cadastrar = new JButton("Cadastrar");
+	private int index;
+
+	private static JFrame frame;
+	private static JLabel titulo;
+	private static JButton novoProduto;
+	private static JButton editar;
+	private static JButton atualizar;
+	private JList lista1 = new JList(Dado.nomeProduto(ControleProduto.lista).toArray());
 	
-	//private static Produto[] listaProduto = new Produto[50];
-	private static JList lista = new JList(Estoque.produto);
+	private JLabel labelNome;
+    private JLabel labelMarca = new JLabel("Marca: ");
+    private JLabel labelPreco = new JLabel("Preço: ");
+    private JLabel labelDescricao = new JLabel("Descrição: ");
+    
 	
-	public TelaProduto() {
-		
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    JScrollPane scroll1 = new JScrollPane(lista1);
+    
+
+    public TelaProduto() {
+    	frame = new JFrame("Produtos");
+    	titulo = new JLabel("Lista de Produtos");
+    	novoProduto = new JButton("Novo Produto");
+    	editar = new JButton("Editar Produto");
+    	atualizar = new JButton("Atualizar lista");
+
+    	labelNome = new JLabel("Nome: ");
 		frame.setSize(600, 300);
 		frame.setLayout(null);
 		
-		titulo.setBounds(100, 10, 150, 30);
+		titulo.setBounds(100, 10, 250, 30);
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		novoProduto.setBounds(100, 45, 150, 20);
+		editar.setBounds(350, 45, 150, 20);
+		atualizar.setBounds(100, 200, 150, 20);
+		scroll1.setBounds(100, 80, 200, 120);
 		
-		lista.setBounds(100, 80, 150, 100);
+		labelNome.setBounds(320, 80, 200, 20);
+		labelMarca.setBounds(320, 100, 200, 20);
+		labelPreco.setBounds(320, 120, 200, 20);
+		labelDescricao.setBounds(320,140, 200, 20);
 		
-		frame.add(lista);
+		frame.add(scroll1);
 		frame.add(titulo);
+		frame.add(novoProduto);
+		frame.add(editar);
+		frame.add(labelNome);
+		frame.add(labelMarca);
+		frame.add(labelPreco);
+		frame.add(labelDescricao);
+		frame.add(atualizar);
+		
+		lista1.addListSelectionListener(this);
+
+		novoProduto.addActionListener(this);
+		editar.addActionListener(this);
+		
 		frame.setVisible(true);
+	}
+    
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+		this.index = lista1.getSelectedIndex();
+		updateLabels(this.index);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+
+		if(src == novoProduto) {
+			new TelaAdicionarEditarProduto(1, index);
+		}
+		if(src == editar) {
+			new TelaAdicionarEditarProduto(2, index);
+		}
+		if(src ==atualizar) {
+			//lista.setListData(new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+			lista1.updateUI();
+		}
+		
+	}
+	public void updateLabels(int n) {
+		labelNome.setText("Nome: "+ControleProduto.lista.get(n).getNome());
+		labelMarca.setText("Telefone: "+ControleProduto.lista.get(n).getMarca());
+		labelPreco.setText("CPF: "+ControleProduto.lista.get(n).getPreco());
+		labelDescricao.setText("CEP: "+ControleProduto.lista.get(n).getDescricao());
 	}
 }

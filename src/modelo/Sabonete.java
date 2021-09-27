@@ -1,6 +1,6 @@
 package modelo;
 
-public class Sabonete {
+public class Sabonete extends Produto{
 
 	private String tipo;
 	private int massa;

@@ -1,6 +1,6 @@
 package modelo;
 
-public class Kit {
+public class Kit extends Produto{
 
 	private Perfume perfume;
 	private Sabonete sabonete;

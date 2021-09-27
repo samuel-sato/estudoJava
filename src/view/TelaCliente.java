@@ -3,22 +3,25 @@ package view;
 import entities.ControleCliente;
 
 import java.awt.Font;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import entities.Dado;
 
-public class TelaCliente {
+public class TelaCliente implements ActionListener, ListSelectionListener{
+	private int index;
 
-	private static JFrame frame = new JFrame("Clientes");
-	private static JLabel titulo = new JLabel("Lista de Clientes");
-	private static JButton novoCliente = new JButton("Novo Cliente");
-	private static JButton editar = new JButton("Editar Cliente");
-	private static JList lista = new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+	private static JFrame frame;
+	private static JLabel titulo;
+	private static JButton novoCliente;
+	private static JButton editar;
+	private static JButton atualizar;
+	private JList lista = new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
 	
-	private JLabel labelNome = new JLabel("Nome: ");
+	private JLabel labelNome;
     private JLabel labelTel = new JLabel("Telefone: ");
     private JLabel labelCpf = new JLabel("CPF: ");
     private JLabel labelCEP = new JLabel("CEP: ");
@@ -26,9 +29,15 @@ public class TelaCliente {
 	
     JScrollPane scroll = new JScrollPane(lista);
     
-    
-    
+
     public TelaCliente() {
+    	frame = new JFrame("Clientes");
+    	titulo = new JLabel("Lista de Clientes");
+    	novoCliente = new JButton("Novo Cliente");
+    	editar = new JButton("Editar Cliente");
+    	atualizar = new JButton("Atualizar lista");
+
+    	 labelNome = new JLabel("Nome: ");
 		frame.setSize(600, 300);
 		frame.setLayout(null);
 		
@@ -36,6 +45,7 @@ public class TelaCliente {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		novoCliente.setBounds(100, 45, 150, 20);
 		editar.setBounds(350, 45, 150, 20);
+		atualizar.setBounds(100, 200, 150, 20);
 		scroll.setBounds(100, 80, 200, 120);
 		
 		labelNome.setBounds(320, 80, 200, 20);
@@ -53,30 +63,44 @@ public class TelaCliente {
 		frame.add(labelCpf);
 		frame.add(labelCEP);
 		frame.add(labelEmail);
+		frame.add(atualizar);
 		
-		
-	
-		lista.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				int index = lista.getSelectedIndex();
+		lista.addListSelectionListener(this);
 
-				updateLabels(index);
-				
-			}
-			public void updateLabels(int n) {
-				labelNome.setText("Nome: "+ControleCliente.listaCliente.get(n).getNome());
-				labelTel.setText("Telefone: "+ControleCliente.listaCliente.get(n).getTelefone());
-				labelCpf.setText("CPF: "+ControleCliente.listaCliente.get(n).getCPF());
-				labelCEP.setText("CEP: "+ControleCliente.listaCliente.get(n).getCEP());
-				labelEmail.setText("Email: "+ControleCliente.listaCliente.get(n).getEmail());
-				
-			}
-		});
-		
-		
+		novoCliente.addActionListener(this);
+		editar.addActionListener(this);
 		
 		frame.setVisible(true);
 	}
-	
+    
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+		this.index = lista.getSelectedIndex();
+		updateLabels(this.index);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+
+		if(src == novoCliente) {
+			new TelaAdicionarEditarCliente(1, index);
+		}
+		if(src == editar) {
+			new TelaAdicionarEditarCliente(2, index);
+		}
+		if(src ==atualizar) {
+			//lista.setListData(new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+			lista.updateUI();
+		}
+		
+	}
+	public void updateLabels(int n) {
+		labelNome.setText("Nome: "+ControleCliente.listaCliente.get(n).getNome());
+		labelTel.setText("Telefone: "+ControleCliente.listaCliente.get(n).getTelefone());
+		labelCpf.setText("CPF: "+ControleCliente.listaCliente.get(n).getCPF());
+		labelCEP.setText("CEP: "+ControleCliente.listaCliente.get(n).getCEP());
+		labelEmail.setText("Email: "+ControleCliente.listaCliente.get(n).getEmail());
+		
+	}
+
 }
