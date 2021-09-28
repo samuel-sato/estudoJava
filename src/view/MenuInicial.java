@@ -110,6 +110,9 @@ public class MenuInicial implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
+		if(src == venda) {
+			new TelaVenda();
+		}
 		if(src == cliente) {
 			new TelaCliente();
 		}

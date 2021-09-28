@@ -31,6 +31,15 @@ public class Sabonete extends Produto{
 	public void setPiramideOufativa(String piramideOufativa) {
 		this.piramideOufativa = piramideOufativa;
 	}
-	
+	public Sabonete(String nome, String marca, double preco, String descricao,String tipo, int massa, int volume, String piramideOufativa) {
+		this.nome=nome;
+		this.marca=marca;
+		this.preco=preco;
+		this.descricao=descricao;
+		this.tipo = tipo;
+		this.massa = massa;
+		this.volume = volume;
+		this.piramideOufativa = piramideOufativa;
+	}
 	
 }
