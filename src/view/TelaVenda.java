@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 //import javax.swing.JTextField;
@@ -19,7 +20,9 @@ import javax.swing.event.ListSelectionListener;
 
 import entities.ControleCliente;
 import entities.ControleProduto;
+import entities.ControleVenda;
 import entities.Dado;
+import modelo.Venda;
 
 
 public class TelaVenda implements ActionListener, ListSelectionListener {
@@ -34,8 +37,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static JLabel cliente = new JLabel("Selecione um cliente");
 	private static JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
 	private static JLabel quantidade = new JLabel("Nº");
-
-	
 	
 	private static JComboBox lCliente = new JComboBox(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
 	private static JComboBox lnumero = new JComboBox(num);
@@ -52,8 +53,11 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	
     JScrollPane scroll1 = new JScrollPane(listaCarrinho);
 
-
+    //Venda v;
+    
+    
 	public TelaVenda() {
+		//v= new Venda();
 		
 		frame.setSize(600, 300);
 		frame.setLayout(null);
@@ -102,7 +106,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		cartao.addActionListener(this);
 		dinheiro.addActionListener(this);
 		adicionar.addActionListener(this);
-		
+		vender.addActionListener(this);
+		cancelar.addActionListener(this);
 		lItem.addActionListener(this);
 	}
 	
@@ -116,24 +121,57 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		Venda v = new Venda();
 		Object src = arg0.getSource();
 		//System.out.println(src);
 		if(src == pix) {
 			cartao.setSelected(false);
 			dinheiro.setSelected(false);
+			v.setFormaPagamento(pix.getText());
 		}
 		if(src == cartao) {
 			pix.setSelected(false);
 			dinheiro.setSelected(false);
+			v.setFormaPagamento(cartao.getText());
 		}
 		if(src == dinheiro) {
 			cartao.setSelected(false);
 			pix.setSelected(false);
+			v.setFormaPagamento(dinheiro.getText());
 		}
 		if(src == adicionar) {
-			model.addElement(lItem.getSelectedItem());
+			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
+			model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()+1));
 		}
-		if(src == lItem) {
+		if(src == vender) {
+			v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
+			
+			if(model.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Nenhum produto no carrinho");
+			} else if(!cartao.isSelected() && !pix.isSelected() && !dinheiro.isSelected()) {
+				JOptionPane.showMessageDialog(null, "Nenhuma forma de pagamento selecionada");
+				
+			} else {
+				
+				for (int i = 0;i<model.getSize(); i++) {
+					
+					System.out.println(model.get(i));
+				}
+				System.out.println();
+				v.listaProdutos();
+				ControleVenda.adicionar(v);
+				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
+				model.clear();
+				
+				ControleVenda.exibir();
+			}
+		}
+		if(src == cancelar) {
+			frame.dispose();
+			model.clear();
+			cartao.setSelected(false);
+			pix.setSelected(false);
+			dinheiro.setSelected(false);
 			
 		}
 		

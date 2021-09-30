@@ -7,17 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 //import java.util.stream.Collectors;
 
+import javax.swing.DefaultListModel;
+
 public class ControleProduto {
-	//private Produto[] listaProdutos = new Produto[50];
+	
+	//private static Object[] listaProdutos = new Object[50];
 	private static int nProduto=0;
 	private static int aux=0;
 	
 	public static List<Produto> lista = new ArrayList<Produto>();
-	
+	//private static DefaultListModel lista = new DefaultListModel();
 	public ControleProduto() {
 		super();
 	}
-	
 	
 	
 	//Lista sem repetições
@@ -36,12 +38,12 @@ public class ControleProduto {
 			nProduto++;
 		}
 	}
-	public void editar(int pos, Produto p) {
+	public static void editar(int pos, Produto p) {
 		lista.remove(pos);
 		lista.add(pos, p);
 		System.out.println("Produto alterado! ");
 	}
-	public void excluir(int i) {
+	public static void excluir(int i) {
 		lista.remove(i);
 		nProduto--;
 	}

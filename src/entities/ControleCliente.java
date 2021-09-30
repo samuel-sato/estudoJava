@@ -2,6 +2,8 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+
 import modelo.Cliente;
 
 
@@ -9,8 +11,10 @@ public class ControleCliente {
 	//private Cliente[] c;
 	private static int nCliente;
 	private static int aux=0;
-	
+
 	public static List <Cliente> listaCliente = new ArrayList<Cliente>();
+	
+
 		
 	//Lista sem repetições
 	public static void adicionar(Cliente c) {

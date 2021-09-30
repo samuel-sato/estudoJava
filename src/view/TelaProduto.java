@@ -12,7 +12,7 @@ import javax.swing.event.ListSelectionListener;
 import entities.ControleCliente;
 import entities.ControleProduto;
 import entities.Dado;
-import entities.Estoque;
+
 
 public class TelaProduto implements ActionListener, ListSelectionListener{
 
@@ -71,7 +71,7 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 
 		novoProduto.addActionListener(this);
 		editar.addActionListener(this);
-		
+		atualizar.addActionListener(this);
 		frame.setVisible(true);
 	}
     
@@ -85,21 +85,35 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 		Object src = e.getSource();
 
 		if(src == novoProduto) {
-			new TelaAdicionarEditarProduto(1, index);
+			//new TelaAdicionarEditarProduto(1, index);			
+			new EscolhaProduto();
 		}
 		if(src == editar) {
-			new TelaAdicionarEditarProduto(2, index);
+			try {
+				new TelaAdicionarEditarProduto(2, index);
+			} catch(IndexOutOfBoundsException ex){
+				
+			}
+			
 		}
 		if(src ==atualizar) {
-			//lista.setListData(new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
-			lista1.updateUI();
+			try {
+				lista1.setListData(Dado.nomeProduto(ControleProduto.lista).toArray());
+				lista1.updateUI();
+			} catch (IndexOutOfBoundsException ex){
+				//updateLabels((this.index)+1);
+				//System.out.println("deu erro");
+			}	
+
 		}
-		
+
 	}
 	public void updateLabels(int n) {
 		labelNome.setText("Nome: "+ControleProduto.lista.get(n).getNome());
-		labelMarca.setText("Telefone: "+ControleProduto.lista.get(n).getMarca());
-		labelPreco.setText("CPF: "+ControleProduto.lista.get(n).getPreco());
-		labelDescricao.setText("CEP: "+ControleProduto.lista.get(n).getDescricao());
+		labelMarca.setText("Marca: "+ControleProduto.lista.get(n).getMarca());
+		labelPreco.setText("Preço: "+ControleProduto.lista.get(n).getPreco());
+		labelDescricao.setText("Descrição: "+ControleProduto.lista.get(n).getDescricao());
 	}
+	
+	
 }

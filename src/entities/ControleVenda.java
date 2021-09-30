@@ -7,42 +7,42 @@ import modelo.Venda;
 
 public class ControleVenda {
 	
-	private int nVenda=0;
-	private int aux=0;
+	private static int nVenda=0;
+	private static int aux=0;
 	
-	List <Venda> listaVenda = new ArrayList<Venda>();
+	public static List <Venda> listaVenda = new ArrayList<Venda>();
 	
 	//Lista sem repetições
-	public void adicionar(Venda c) {
-		this.aux=0;
-		for (Venda x: this.listaVenda) {
+	public static void adicionar(Venda c) {
+		aux=0;
+		for (Venda x: listaVenda) {
 			if (x.equals(c)) {
-				System.out.println("Cliente já adicionado");
+				System.out.println("Venda já adicionado");
 				
-				this.aux++;
+				aux++;
 			}
 		} 
-		if(this.aux==0){
+		if(aux==0){
 			listaVenda.add(c);
-			System.out.println("cliente adicionado");
-			this.nVenda++;
+			System.out.println("venda adicionada");
+			nVenda++;
 		}
 	}
 	public void editar(int pos, Venda c) {
 		listaVenda.remove(pos);
 		listaVenda.add(pos, c);
-		System.out.println("cliente alterado! ");
+		System.out.println("venda alterada! ");
 	}
 	public void excluir(int i) {
 		listaVenda.remove(i);
-		this.nVenda--;
+		nVenda--;
 	}
 	
 	//alterar exibir 
-	/*
-	public void exibir() {
-		for (Venda x: this.listaVenda) {
-			//System.out.println(x.getNome());
+	
+	public static void exibir() {
+		for (Venda x: listaVenda) {
+			System.out.println(x.getCliente());
 		}
-	}*/
+	}
 }

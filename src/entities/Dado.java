@@ -13,7 +13,7 @@ public class Dado {
 		
 		for (Cliente x: ControleCliente.listaCliente) {
 			nome.add(x.getNome());
-			System.out.println(x.getNome());
+			//System.out.println(x.getNome());
 		}
 		return nome;
 	}
@@ -22,8 +22,8 @@ public class Dado {
 		List<String> nome1 = new ArrayList<String>();
 		
 		for (Produto x: ControleProduto.lista) {
-			nome1.add(x.getNome());
-			System.out.println(x.getNome());
+			nome1.add(x.getNome()+" - "+x.getMarca());
+			//System.out.println(x.getNome());
 		}
 		return nome1;
 	}

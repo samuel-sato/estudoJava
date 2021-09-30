@@ -7,6 +7,7 @@ import javax.swing.*;
 import modelo.Cliente;
 import modelo.Creme;
 import modelo.Perfume;
+import modelo.Sabonete;
 import entities.ControleCliente;
 import entities.ControleProduto;
 import entities.Estoque;
@@ -67,7 +68,10 @@ public class MenuInicial implements ActionListener{
 		Perfume p3 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p4 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Creme p5 = new Creme("creme", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
+		Sabonete p6 = new Sabonete("SANONETE", "Dove", 15.90, "descrição sabonete", "mão",250, "cheiro");
 		
+
+
 		Estoque e = new Estoque();
 		e.adicionar(p1);
 		
@@ -76,13 +80,13 @@ public class MenuInicial implements ActionListener{
 		Cliente c1 = new Cliente("sato1", "123456789", "sam@gmail.com", "098755241", "1245213425");
 		Cliente c2 = new Cliente("sato2", "123456789", "sam@gmail.com", "098742111", "1245213425");
 		Cliente c3 = new Cliente("sato3", "123456789", "sam@gmail.com", "0987500001", "1245213425");
-		Cliente c4 = new Cliente("sato3", "123456789", "sam@gmail.com", "3123", "1245213425");
-		Cliente c5 = new Cliente("sato3", "123456789", "sam@gmail.com", "098412157500001", "1245213425");
-		Cliente c6 = new Cliente("sato3", "123456789", "sam@gmail.com", "8765421", "1245213425");
-		Cliente c7 = new Cliente("sato3", "123456789", "sam@gmail.com", "52626", "1245213425");
-		Cliente c8 = new Cliente("sato3", "123456789", "sam@gmail.com", "235235", "1245213425");
-		Cliente c9 = new Cliente("sato3", "123456789", "sam@gmail.com", "84584", "1245213425");
-		Cliente c0 = new Cliente("sato3", "123456789", "sam@gmail.com", "7457457", "1245213425");
+		Cliente c4 = new Cliente("sato4", "123456789", "sam@gmail.com", "3123", "1245213425");
+		Cliente c5 = new Cliente("sato5", "123456789", "sam@gmail.com", "098412157500001", "1245213425");
+		Cliente c6 = new Cliente("sato6", "123456789", "sam@gmail.com", "8765421", "1245213425");
+		Cliente c7 = new Cliente("sato7", "123456789", "sam@gmail.com", "52626", "1245213425");
+		Cliente c8 = new Cliente("sato8", "123456789", "sam@gmail.com", "235235", "1245213425");
+		Cliente c9 = new Cliente("sato9", "123456789", "sam@gmail.com", "84584", "1245213425");
+		Cliente c0 = new Cliente("sato0", "123456789", "sam@gmail.com", "7457457", "1245213425");
 		
 		//ControleCliente controle = new ControleCliente();
 		
@@ -102,6 +106,7 @@ public class MenuInicial implements ActionListener{
 		ControleProduto.adicionar(p3);
 		ControleProduto.adicionar(p4);
 		ControleProduto.adicionar(p5);
+		ControleProduto.adicionar(p6);
 		
 		System.out.println();
 	}
@@ -121,3 +126,4 @@ public class MenuInicial implements ActionListener{
 		}
 	}
 }
+//https://sig.unb.br/sigaa/link/public/extensao/visualizacaoAcaoExtensao/3087

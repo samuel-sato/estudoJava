@@ -5,11 +5,14 @@ import entities.ControleCliente;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import entities.Dado;
+import modelo.Cliente;
 
 public class TelaCliente implements ActionListener, ListSelectionListener{
 	private int index;
@@ -19,6 +22,10 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 	private static JButton novoCliente;
 	private static JButton editar;
 	private static JButton atualizar;
+	//private static DefaultListModel model = new DefaultListModel();
+	//public static List <Cliente> listaCliente = new ArrayList<Cliente>();
+
+	
 	private JList lista = new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
 	
 	private JLabel labelNome;
@@ -69,7 +76,7 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 
 		novoCliente.addActionListener(this);
 		editar.addActionListener(this);
-		
+		atualizar.addActionListener(this);
 		frame.setVisible(true);
 	}
     
@@ -77,6 +84,7 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 	public void valueChanged(ListSelectionEvent arg0) {
 		this.index = lista.getSelectedIndex();
 		updateLabels(this.index);
+	
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -86,21 +94,34 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 			new TelaAdicionarEditarCliente(1, index);
 		}
 		if(src == editar) {
-			new TelaAdicionarEditarCliente(2, index);
+			try {
+				new TelaAdicionarEditarCliente(2, index);
+			} catch (IndexOutOfBoundsException ex) {
+				JOptionPane.showMessageDialog(null, "Nenhum Cliente selecionado!");
+
+			}
+			
 		}
 		if(src ==atualizar) {
-			//lista.setListData(new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+			lista.setListData(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
 			lista.updateUI();
+			updateLabels((this.index)+1);
 		}
 		
 	}
 	public void updateLabels(int n) {
-		labelNome.setText("Nome: "+ControleCliente.listaCliente.get(n).getNome());
-		labelTel.setText("Telefone: "+ControleCliente.listaCliente.get(n).getTelefone());
-		labelCpf.setText("CPF: "+ControleCliente.listaCliente.get(n).getCPF());
-		labelCEP.setText("CEP: "+ControleCliente.listaCliente.get(n).getCEP());
-		labelEmail.setText("Email: "+ControleCliente.listaCliente.get(n).getEmail());
-		
+		try {
+			labelNome.setText("Nome: "+ControleCliente.listaCliente.get(n).getNome());
+			labelTel.setText("Telefone: "+ControleCliente.listaCliente.get(n).getTelefone());
+			labelCpf.setText("CPF: "+ControleCliente.listaCliente.get(n).getCPF());
+			labelCEP.setText("CEP: "+ControleCliente.listaCliente.get(n).getCEP());
+			labelEmail.setText("Email: "+ControleCliente.listaCliente.get(n).getEmail());
+			
+		} catch (IndexOutOfBoundsException ex){
+			//updateLabels((this.index)+1);
+			//System.out.println("deu erro");
+		}	
+
 	}
 
 }
