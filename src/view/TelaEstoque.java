@@ -1,9 +1,10 @@
 package view;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -14,31 +15,29 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-//import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import entities.ControleCliente;
 import entities.ControleProduto;
 import entities.ControleVenda;
 import entities.Dado;
+import entities.Estoque;
 import modelo.Venda;
 
-
-public class TelaVenda implements ActionListener, ListSelectionListener {
+public class TelaEstoque implements ActionListener, ListSelectionListener{
 	
-	private static String[] num= {"1", "2", "3", "4", "5", "6"};
+private static String[] num= {"1", "2", "3", "4", "5", "6"};
 	
 	private static DefaultListModel model = new DefaultListModel();
 	
 	private static JFrame frame = new JFrame("Venda");
-	private static JLabel carrinho = new JLabel("Carrinho");
+	private static JLabel carrinho = new JLabel("Estoque");
 	private static JLabel item = new JLabel("Selecione um produto");
-	private static JLabel cliente = new JLabel("Selecione um cliente");
+
 	public static JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
 	private static JLabel quantidade = new JLabel("Nº");
 	
-	private static JComboBox lCliente = new JComboBox(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+	//private static JComboBox lCliente = new JComboBox(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
 	private static JComboBox lnumero = new JComboBox(num);
 	private static JRadioButton pix = new JRadioButton("Pix", false);
 	private static JRadioButton cartao = new JRadioButton("Cartão", false);
@@ -46,32 +45,32 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 
 	private static JLabel formaPagamento = new JLabel("Forma de pagamento");
 	private static JRadioButton FormaPagamento = new JRadioButton();
-	private static JButton adicionar = new JButton("Adicionar Item");
+	private static JButton adicionar = new JButton("Adicionar");
+	private static JButton retirar = new JButton("Retirar");
 	private static JButton vender = new JButton("Vender");
 	private static JButton cancelar = new JButton("Cancelar");
-	private static JList listaCarrinho = new JList(model);
+	private static List<String> teste = Dado.nomeEstoque();
+	private static JList listaCarrinho = new JList(teste.toArray());
 	
     JScrollPane scroll1 = new JScrollPane(listaCarrinho);
 
     //Venda v;
     
     
-	public TelaVenda() {
-		//v= new Venda();
+	public TelaEstoque() {
 		
 		frame.setSize(600, 300);
 		frame.setLayout(null);
 		
 		carrinho.setBounds(50, 20, 100, 20);
 		scroll1.setBounds(50, 40, 210, 150);
-		cliente.setBounds(300, 20, 200, 20);
-		lCliente.setBounds(300, 40, 200, 20);
+		item.setBounds(300, 20, 200, 20);
+		lItem.setBounds(300, 40, 200, 20);
 		
-		item.setBounds(300, 80, 200, 20);
-		lItem.setBounds(300, 100, 200, 20);
-		quantidade.setBounds(530, 80, 50, 20);
-		lnumero.setBounds(530, 100, 40, 20);
-		adicionar.setBounds(300, 130, 150, 20);
+		quantidade.setBounds(530, 20, 50, 20);
+		lnumero.setBounds(530, 40, 40, 20);
+		adicionar.setBounds(300, 70, 100, 20);
+		retirar.setBounds(440, 70, 100, 20);
 		
 		formaPagamento.setBounds(300, 160, 180, 20);
 		pix.setBounds(300, 180, 80, 20);
@@ -81,21 +80,22 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		cancelar.setBounds(300, 205, 100, 20);
 		vender.setBounds(440, 205, 100, 20);
 		
-		frame.add(cliente);
-		frame.add(lCliente);
+		//frame.add(cliente);
+		//frame.add(lCliente);
 		frame.add(item);
 		frame.add(lItem);
 		frame.add(lnumero);
 		frame.add(quantidade);
 		frame.add(adicionar);
+		frame.add(retirar);
 		
-		frame.add(formaPagamento);
-		frame.add(pix);
-		frame.add(cartao);
-		frame.add(dinheiro);
+		//frame.add(formaPagamento);
+		//frame.add(pix);
+		//frame.add(cartao);
+		//frame.add(dinheiro);
 		
-		frame.add(vender);
-		frame.add(cancelar);
+		//frame.add(vender);
+		//frame.add(cancelar);
 		
 		frame.add(carrinho);
 		frame.add(scroll1);
@@ -140,11 +140,14 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			v.setFormaPagamento(dinheiro.getText());
 		}
 		if(src == adicionar) {
-			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()+1));
+			//v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
+			//model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()+1));
+			
+			Estoque.adicionarVariasUnidades(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
+			Estoque.listarEstoque();
 		}
 		if(src == vender) {
-			v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
+			//v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
 			
 			if(model.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Nenhum produto no carrinho");

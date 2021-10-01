@@ -33,6 +33,7 @@ public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectio
 	private static JButton enviar, deletar;
 	private static JButton editar;
 
+	
 	static int index;
 		
 	
@@ -137,7 +138,7 @@ public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectio
 			System.out.println(String.valueOf(tNome.getText()));
 			Cliente c = new Cliente(String.valueOf(tNome.getText()), String.valueOf(tTel.getText()), String.valueOf(tEmail.getText()), String.valueOf(tCPF.getText()), String.valueOf(tCEP.getText()));
 			ControleCliente.adicionar(c);
-			ControleCliente.exibir();
+			//ControleCliente.exibir();
 			JOptionPane.showMessageDialog(null, "Cliente adicionado!");
 		}
 		if(src == editar) {

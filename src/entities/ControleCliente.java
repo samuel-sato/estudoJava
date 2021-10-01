@@ -13,20 +13,18 @@ public class ControleCliente {
 	private static int aux=0;
 
 	public static List <Cliente> listaCliente = new ArrayList<Cliente>();
-	
-
 		
 	//Lista sem repetições
 	public static void adicionar(Cliente c) {
-		aux=0;
+		ControleCliente.aux=0;
 		for (Cliente x: ControleCliente.listaCliente) {
 			if (x.equals(c)) {
 				System.out.println("Cliente já adicionado");
 				
-				aux++;
+				ControleCliente.aux++;
 			}
 		} 
-		if(aux==0){
+		if(ControleCliente.aux==0){
 			listaCliente.add(c);
 			
 			System.out.println("cliente adicionado");

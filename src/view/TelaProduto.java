@@ -84,8 +84,7 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
-		if(src == novoProduto) {
-			//new TelaAdicionarEditarProduto(1, index);			
+		if(src == novoProduto) {			
 			new EscolhaProduto();
 		}
 		if(src == editar) {
@@ -94,26 +93,21 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 			} catch(IndexOutOfBoundsException ex){
 				
 			}
-			
 		}
 		if(src ==atualizar) {
 			try {
 				lista1.setListData(Dado.nomeProduto(ControleProduto.lista).toArray());
 				lista1.updateUI();
+				
 			} catch (IndexOutOfBoundsException ex){
-				//updateLabels((this.index)+1);
-				//System.out.println("deu erro");
+			
 			}	
-
 		}
-
 	}
 	public void updateLabels(int n) {
 		labelNome.setText("Nome: "+ControleProduto.lista.get(n).getNome());
 		labelMarca.setText("Marca: "+ControleProduto.lista.get(n).getMarca());
 		labelPreco.setText("Preço: "+ControleProduto.lista.get(n).getPreco());
 		labelDescricao.setText("Descrição: "+ControleProduto.lista.get(n).getDescricao());
-	}
-	
-	
+	}	
 }

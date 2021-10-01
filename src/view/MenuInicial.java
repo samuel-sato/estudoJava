@@ -33,20 +33,20 @@ public class MenuInicial implements ActionListener{
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(230, 40, 150, 30);
 		
-		venda.setBounds(140, 100, 100, 30);
-		cliente.setBounds(250, 100, 100, 30);
-		produto.setBounds(360, 100, 100, 30);
+		venda.setBounds(200, 100, 100, 30);
+		cliente.setBounds(310, 100, 100, 30);
+		produto.setBounds(200, 160, 100, 30);
 		
-		catalogo.setBounds(140, 160, 100, 30);
-		relatorio.setBounds(250, 160, 100, 30);
-		estoque.setBounds(360, 160, 100, 30);
+		//catalogo.setBounds(140, 160, 100, 30);
+		//relatorio.setBounds(250, 160, 100, 30);
+		estoque.setBounds(310, 160, 100, 30);
 		
 		frame.add(titulo);
 		frame.add(venda);
 		frame.add(cliente);
 		frame.add(produto);
-		frame.add(catalogo);
-		frame.add(relatorio);
+		//frame.add(catalogo);
+		//frame.add(relatorio);
 		frame.add(estoque);
 		
 		
@@ -63,32 +63,26 @@ public class MenuInicial implements ActionListener{
 		relatorio.addActionListener(menu);
 		estoque.addActionListener(menu);
 		
-		Perfume p1 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
-		Perfume p2 = new Perfume("NOME", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
-		Perfume p3 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
-		Perfume p4 = new Perfume("NOME2", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
-		Creme p5 = new Creme("creme", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
-		Sabonete p6 = new Sabonete("SANONETE", "Dove", 15.90, "descrição sabonete", "mão",250, "cheiro");
+		Perfume p1 = new Perfume("Perfume1", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+		Perfume p2 = new Perfume("Perfume2", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+		Perfume p3 = new Perfume("Perfume3", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+		Perfume p4 = new Perfume("Perfume4", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
+		Creme p5 = new Creme("Creme1", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
+		Sabonete p6 = new Sabonete("Sabonete1", "Dove", 15.90, "descrição sabonete", "mão",250, "cheiro");
 		
-
-
-		Estoque e = new Estoque();
-		e.adicionar(p1);
+		Estoque.adicionar(p1);
+		Estoque.adicionar(p2);
+		Estoque.adicionar(p3);
+		Estoque.adicionar(p4);
+		Estoque.adicionar(p5);
 		
-		e.adicionar(p3);
+		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
+		Cliente c2 = new Cliente("Fernanda", "98765432", "fer@gmail.com", "098755241", "1245213425");
+		Cliente c3 = new Cliente("Davi", "12312312", "davi@gmail.com", "0987500001", "1245213425");
+		Cliente c4 = new Cliente("Marcos", "32132132", "marcos@gmail.com", "3123", "1245213425");
+		Cliente c5 = new Cliente("Daniela", "01010101", "dani@gmail.com", "098412157500001", "1245213425");
+		Cliente c6 = new Cliente("Alex", "13123146", "alex@gmail.com", "8765421", "1245213425");
 		
-		Cliente c1 = new Cliente("sato1", "123456789", "sam@gmail.com", "098755241", "1245213425");
-		Cliente c2 = new Cliente("sato2", "123456789", "sam@gmail.com", "098742111", "1245213425");
-		Cliente c3 = new Cliente("sato3", "123456789", "sam@gmail.com", "0987500001", "1245213425");
-		Cliente c4 = new Cliente("sato4", "123456789", "sam@gmail.com", "3123", "1245213425");
-		Cliente c5 = new Cliente("sato5", "123456789", "sam@gmail.com", "098412157500001", "1245213425");
-		Cliente c6 = new Cliente("sato6", "123456789", "sam@gmail.com", "8765421", "1245213425");
-		Cliente c7 = new Cliente("sato7", "123456789", "sam@gmail.com", "52626", "1245213425");
-		Cliente c8 = new Cliente("sato8", "123456789", "sam@gmail.com", "235235", "1245213425");
-		Cliente c9 = new Cliente("sato9", "123456789", "sam@gmail.com", "84584", "1245213425");
-		Cliente c0 = new Cliente("sato0", "123456789", "sam@gmail.com", "7457457", "1245213425");
-		
-		//ControleCliente controle = new ControleCliente();
 		
 		ControleCliente.adicionar(c1);
 		ControleCliente.adicionar(c2);
@@ -96,11 +90,7 @@ public class MenuInicial implements ActionListener{
 		ControleCliente.adicionar(c4);
 		ControleCliente.adicionar(c5);
 		ControleCliente.adicionar(c6);
-		ControleCliente.adicionar(c7);
-		ControleCliente.adicionar(c8);
-		ControleCliente.adicionar(c9);
-		ControleCliente.adicionar(c0);
-		
+
 		ControleProduto.adicionar(p1);
 		ControleProduto.adicionar(p2);
 		ControleProduto.adicionar(p3);
@@ -124,6 +114,8 @@ public class MenuInicial implements ActionListener{
 		if(src == produto) {
 			new TelaProduto();
 		}
+		if(src == estoque) {
+			new TelaEstoque();
+		}
 	}
 }
-//https://sig.unb.br/sigaa/link/public/extensao/visualizacaoAcaoExtensao/3087

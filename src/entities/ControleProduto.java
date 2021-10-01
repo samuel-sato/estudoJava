@@ -20,15 +20,14 @@ public class ControleProduto {
 	public ControleProduto() {
 		super();
 	}
-	
-	
+
 	//Lista sem repetições
 	public static void adicionar(Produto p) {
+		//Estoque.adicionar(p);
 		aux=0;
 		for (Produto x: lista) {
 			if (x.equals(p)) {
 				System.out.println("Produto já adicionado");
-				
 				aux++;
 			}
 		} 
@@ -53,7 +52,6 @@ public class ControleProduto {
 			System.out.println(x.getNome());
 		}
 	}
-	
 	
 	
 	/*

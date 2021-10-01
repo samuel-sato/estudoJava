@@ -178,8 +178,7 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 
 	}
 	public TelaAdicionarEditarProduto(int i, int index) {
-		// i=1 cadastar
-		// i=2 editar
+
 		this.index = index;
 		
     	JLabel titulo = new JLabel("Produto");
@@ -242,8 +241,7 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
         	frame.add(this.tPiramideOufativa);
         	
         }
-        if(ControleProduto.lista.get(index).getClass() == Creme.class) {
-        	
+        if(ControleProduto.lista.get(index).getClass() == Creme.class) {        	
         	Creme cre = (Creme) ControleProduto.lista.get(index);
 
         	this.labelTipo.setBounds(100, 130, 200, 20);
@@ -276,13 +274,13 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
     	frame.setSize(600, 300);
 		frame.setLayout(null);
 		
-		labelNome.setBounds(100, 50, 200, 20);
+		this.labelNome.setBounds(100, 50, 200, 20);
 		this.tNome.setBounds(230, 50, 240, 20);
-		labelMarca.setBounds(100, 70, 200, 20);
+		this.labelMarca.setBounds(100, 70, 200, 20);
 		this.tMarca.setBounds(230, 70, 240, 20);
-		labelPreco.setBounds(100, 90, 200, 20);
+		this.labelPreco.setBounds(100, 90, 200, 20);
 		this.tPreco.setBounds(230, 90, 240, 20);
-		labelDescricao.setBounds(100, 110, 200, 20);
+		this.labelDescricao.setBounds(100, 110, 200, 20);
 		this.tDescricao.setBounds(230, 110, 240, 20);
 		
 		this.enviar.setBounds(100, 210, 150, 30);
@@ -310,7 +308,7 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if(src == cadastrar) {
-			System.out.println("Botao cadastrar");
+			
 			if(TelaAdicionarEditarProduto.aux==1) {
 				//System.out.println(tVolume.getText()+" -----------");
 				Perfume p = new Perfume(String.valueOf(tNome.getText()), String.valueOf(tMarca.getText()), Double.valueOf(tPreco.getText()), String.valueOf(tDescricao.getText()), Integer.valueOf(this.tVolume.getText()), String.valueOf(tGenero.getText()), String.valueOf(tFamiliaOufativa.getText()));
@@ -325,6 +323,8 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 				Creme c = new Creme(String.valueOf(tNome.getText()), String.valueOf(tMarca.getText()), Double.valueOf(tPreco.getText()), String.valueOf(tDescricao.getText()), String.valueOf(tTipoPele.getText()), String.valueOf(tTipo.getText()), Integer.valueOf(tMassa.getText()));
 				ControleProduto.adicionar(c);
 			}
+			frame.dispose();
+			JOptionPane.showMessageDialog(null, "Produto Adicionado!");
 		}
 		if(src == enviar) {
 			if(ControleProduto.lista.get(TelaAdicionarEditarProduto.index).getClass() == Perfume.class) {
@@ -343,7 +343,10 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 				
 				//ControleProduto.editar(TelaAdicionarEditarProduto.index, p);
 			}
-			//ControleProduto.editar(TelaAdicionarEditarProduto.index, p);	
+			//ControleProduto.editar(TelaAdicionarEditarProduto.index, p);
+			frame.dispose();
+			JOptionPane.showMessageDialog(null, "Produto Editado!");
+			
 		}
 		if(src == deletar) {
 			ControleProduto.excluir(TelaAdicionarEditarProduto.index); 
