@@ -43,18 +43,14 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 	private static JRadioButton cartao = new JRadioButton("Cartão", false);
 	private static JRadioButton dinheiro = new JRadioButton("Dinheiro", false);
 
-	private static JLabel formaPagamento = new JLabel("Forma de pagamento");
-	private static JRadioButton FormaPagamento = new JRadioButton();
 	private static JButton adicionar = new JButton("Adicionar");
 	private static JButton retirar = new JButton("Retirar");
 	private static JButton vender = new JButton("Vender");
 	private static JButton cancelar = new JButton("Cancelar");
-	private static List<String> teste = Dado.nomeEstoque();
-	private static JList listaCarrinho = new JList(teste.toArray());
+	private static List<String> lista = Dado.nomeEstoque();
+	private static JList listaEstoque = new JList(lista.toArray());
 	
-    JScrollPane scroll1 = new JScrollPane(listaCarrinho);
-
-    //Venda v;
+    JScrollPane scroll1 = new JScrollPane(listaEstoque);
     
     
 	public TelaEstoque() {
@@ -72,16 +68,6 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 		adicionar.setBounds(300, 70, 100, 20);
 		retirar.setBounds(440, 70, 100, 20);
 		
-		formaPagamento.setBounds(300, 160, 180, 20);
-		pix.setBounds(300, 180, 80, 20);
-		cartao.setBounds(380, 180, 80, 20);
-		dinheiro.setBounds(460, 180, 100, 20);
-		
-		cancelar.setBounds(300, 205, 100, 20);
-		vender.setBounds(440, 205, 100, 20);
-		
-		//frame.add(cliente);
-		//frame.add(lCliente);
 		frame.add(item);
 		frame.add(lItem);
 		frame.add(lnumero);
@@ -89,13 +75,6 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 		frame.add(adicionar);
 		frame.add(retirar);
 		
-		//frame.add(formaPagamento);
-		//frame.add(pix);
-		//frame.add(cartao);
-		//frame.add(dinheiro);
-		
-		//frame.add(vender);
-		//frame.add(cancelar);
 		
 		frame.add(carrinho);
 		frame.add(scroll1);
@@ -109,6 +88,7 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 		vender.addActionListener(this);
 		cancelar.addActionListener(this);
 		lItem.addActionListener(this);
+		retirar.addActionListener(this);
 	}
 	
 
@@ -121,62 +101,31 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		Venda v = new Venda();
+		
 		Object src = arg0.getSource();
-		//System.out.println(src);
-		if(src == pix) {
-			cartao.setSelected(false);
-			dinheiro.setSelected(false);
-			v.setFormaPagamento(pix.getText());
-		}
-		if(src == cartao) {
-			pix.setSelected(false);
-			dinheiro.setSelected(false);
-			v.setFormaPagamento(cartao.getText());
-		}
-		if(src == dinheiro) {
-			cartao.setSelected(false);
-			pix.setSelected(false);
-			v.setFormaPagamento(dinheiro.getText());
-		}
+	
 		if(src == adicionar) {
-			//v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			//model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()+1));
-			
 			Estoque.adicionarVariasUnidades(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			Estoque.listarEstoque();
+			//Estoque.listarEstoque();
+			listaEstoque.setListData(Dado.nomeEstoque().toArray());
+			listaEstoque.updateUI();
 		}
-		if(src == vender) {
-			//v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
-			
-			if(model.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Nenhum produto no carrinho");
-			} else if(!cartao.isSelected() && !pix.isSelected() && !dinheiro.isSelected()) {
-				JOptionPane.showMessageDialog(null, "Nenhuma forma de pagamento selecionada");
-				
-			} else {
-				
-				for (int i = 0;i<model.getSize(); i++) {
-					
-					System.out.println(model.get(i));
-				}
-				System.out.println();
-				v.listaProdutos();
-				ControleVenda.adicionar(v);
-				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
-				model.clear();
-				
-				ControleVenda.exibir();
-			}
+		if (src == retirar) {
+			Estoque.retirar(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
+			listaEstoque.setListData(Dado.nomeEstoque().toArray());
+			listaEstoque.updateUI();
+			//Estoque.listarEstoque();
 		}
+		
+		/*
 		if(src == cancelar) {
 			frame.dispose();
 			model.clear();
 			cartao.setSelected(false);
 			pix.setSelected(false);
 			dinheiro.setSelected(false);
-			
 		}
+		*/
 		
 	}
 

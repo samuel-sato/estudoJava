@@ -22,6 +22,7 @@ import entities.ControleCliente;
 import entities.ControleProduto;
 import entities.ControleVenda;
 import entities.Dado;
+import entities.Estoque;
 import modelo.Venda;
 
 
@@ -163,7 +164,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 				model.clear();
 				
-				ControleVenda.exibir();
+				
+				//ControleVenda.exibir();
 			}
 		}
 		if(src == cancelar) {
