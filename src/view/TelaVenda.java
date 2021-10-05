@@ -52,10 +52,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static JButton cancelar = new JButton("Cancelar");
 	private static JList listaCarrinho = new JList(model);
 	
-    JScrollPane scroll1 = new JScrollPane(listaCarrinho);
-
-    //Venda v;
-    
+    JScrollPane scroll1 = new JScrollPane(listaCarrinho);    
     
 	public TelaVenda() {
 		//v= new Venda();
