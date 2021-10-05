@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.util.ArrayList;
@@ -54,11 +55,18 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	
     JScrollPane scroll1 = new JScrollPane(listaCarrinho);    
     
+    //getContentPane().add(botaoPanel, BorderLayout.SOUTH);
+    
 	public TelaVenda() {
 		//v= new Venda();
 		
+		Venda.setPosicao();
+		Venda.carrinho.clear();
+		Venda.unid.clear();
+		
 		frame.setSize(600, 300);
 		frame.setLayout(null);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		carrinho.setBounds(50, 20, 100, 20);
 		scroll1.setBounds(50, 40, 210, 150);
@@ -107,14 +115,14 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		vender.addActionListener(this);
 		cancelar.addActionListener(this);
 		lItem.addActionListener(this);
+		
+		
 	}
 	
 
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 		// TODO Auto-generated method stub
-		
-		
 	}
 
 	@Override
@@ -138,8 +146,10 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			v.setFormaPagamento(dinheiro.getText());
 		}
 		if(src == adicionar) {
+			System.out.println(src);
 			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()));
 			model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()));
+	
 		}
 		if(src == vender) {
 			v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
@@ -159,12 +169,12 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				*/
 				v.listaProdutos();
 				
-				//System.out.println(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
 				v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
 				v.vender();
 				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 				model.clear();
 				ControleVenda.adicionar(v);
+				Venda.setPosicao();
 			}
 		}
 		if(src == cancelar) {
@@ -174,8 +184,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			pix.setSelected(false);
 			dinheiro.setSelected(false);
 			
-		}
-		
+		}		
 	}
-
 }

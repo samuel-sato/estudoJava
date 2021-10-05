@@ -42,6 +42,8 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	private static JButton retirar = new JButton("Retirar");
 	private static JButton vender = new JButton("Vender");
 	private static JButton cancelar = new JButton("Cancelar");
+	private static JButton atualizar = new JButton("Atualizar");
+	
 	private JList listaEstoque = new JList(Estoque.listarEstoque().toArray());
 	
     JScrollPane scroll1 = new JScrollPane(listaEstoque);
@@ -62,6 +64,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		quantidade.setBounds(530, 20, 50, 20);
 		lnumero.setBounds(530, 40, 40, 20);
 		adicionar.setBounds(300, 70, 100, 20);
+		atualizar.setBounds(300, 100, 100, 20);
 		retirar.setBounds(440, 70, 100, 20);
 		
 		frame.add(item);
@@ -69,6 +72,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		frame.add(lnumero);
 		frame.add(quantidade);
 		frame.add(adicionar);
+		frame.add(atualizar);
 		frame.add(retirar);
 		
 		
@@ -82,6 +86,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		cancelar.addActionListener(this);
 		lItem.addActionListener(this);
 		retirar.addActionListener(this);
+		atualizar.addActionListener(this);
 	}
 	
 
@@ -109,8 +114,12 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
-			 
+			
 			//lnumero.setSelectedIndex(0);
+		}
+		if(src == atualizar) {
+			listaEstoque.setListData(Estoque.listarEstoque().toArray());
+			listaEstoque.updateUI();
 		}
 		num = 0;
 	}

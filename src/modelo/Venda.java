@@ -1,18 +1,26 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import entities.Estoque;
 
 public class Venda {
 	
 	private Cliente cliente;
-	private Produto[] produto = new Produto[5];
-	private int quantidade[] = new int[5];
+	public static  List<Produto> carrinho = new ArrayList<>();
+	public static List<Integer> unid = new ArrayList<>();
+	private static Produto[] produto = new Produto[10];
+	private static int quantidade[] = new int[10];
 	private String formaPagamento;
 	private LocalDateTime data;
+	private static int posicao=0;
+
 	
-	private int posicao=0;
+	public Venda() {
+		super();
+	}
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -33,18 +41,35 @@ public class Venda {
 	public LocalDateTime getData() {
 		return data;
 	}
+	
+	public static void setPosicao() {
+		Venda.posicao=0;
+	}
 
 
 	public void adicionarCarrinho(Produto p, int unidades) {
-		if(this.posicao==0) {
+		Venda.carrinho.add(p);
+		Venda.unid.add(unidades);
+		if(Venda.posicao==0) {
+			
 			this.produto[0] = p;
 			this.quantidade[0] = unidades;
-			this.posicao++;
+			Venda.posicao++;
+			System.out.println("aaa 1 :"+Venda.posicao);
+			System.out.println(this.produto[0]);
+			
 		} else {
-			this.produto[this.posicao] = p;
-			this.quantidade[this.posicao] = unidades;
-			this.posicao++;
+			this.produto[Venda.posicao] = p;
+			this.quantidade[Venda.posicao] = unidades;
+			Venda.posicao++;
+			System.out.println("aaaaaaaaa :"+Venda.posicao);
+			
 		}
+		
+		System.out.println(Venda.posicao);
+		//System.out.println(this.produto[Venda.posicao]);
+		//listaProdutos();
+		System.out.println();
 	}
 	
 	
@@ -81,20 +106,33 @@ public class Venda {
 		}
 	}
 	public void vender() {
-		for(int i=0; i<=this.posicao-1;i++) {
+		int i=0;
+		do {
+			Produto produto = Venda.carrinho.get(i);
+			int unidades = Venda.unid.get(i);
+			//System.out.println(Venda.produto[1]);//dando valor null
+			System.out.println();
+			Estoque.retirar(produto, unidades);
+			i++;
+		}while(i<=Venda.posicao-1);
+		Venda.carrinho.clear();
+		Venda.unid.clear();
+		/*
+		for(int i=0; i<=Venda.posicao;i++) {
 			Produto produto = this.produto[i];
 			int unidades = this.quantidade[i];
+			System.out.println(produto);//dando valor null
 			Estoque.retirar(produto, unidades);
 		}
+		*/
+		
 	}
 	
 	public void listaProdutos() {
-		for(int i=0; i<=this.posicao-1;i++) {
-			System.out.println(this.produto[i]+" : "+this.quantidade[i]);
+		for(int i=0; i<=posicao-1;i++) {
+			//System.out.println(this.produto[i]+" : "+this.quantidade[i]);
+			
+			//System.out.println(carrinho.get(i));
 		}
-	}
-	
-	public Venda() {
-		super();
-	}
+	}	
 }
