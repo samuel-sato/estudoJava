@@ -1,16 +1,39 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.Creme;
+import modelo.Kit;
+import modelo.Perfume;
 import modelo.Produto;
+import modelo.Sabonete;
 
 
 public class Estoque {
 	
-	public static int[] quantidade = new int[40];
-	public static Produto[] produto = new Produto[40];
-	public static int posicao=0; 
+	private static int[] quantidade = new int[40];
+	private static Produto[] produto = new Produto[40];
+	private static int posicao=0;
 	
+	public Estoque() {
+		super();
+	}
+		
+	public static int[] getQuantidade() {
+		return quantidade;
+	}
 	
+	public static Produto[] getProduto(int i) {
+		return produto;
+	}
+
+	public static int getPosicao() {
+		return posicao;
+	}
+
 	//Adiciona apenas uma unidade ao estoque
+	/*
 	public static void adicionar(Produto p) {
 		int aux=0;
 		
@@ -40,9 +63,9 @@ public class Estoque {
 			}
 		}
 	}
+	*/
 	
-	
-	public static void adicionarVariasUnidades(Produto p, int quantid) {
+	public static void adicionar(Produto p, int quantid) {
 		int aux=0;
 		if(posicao==0) {
 			Estoque.quantidade[posicao]+=quantid;
@@ -81,17 +104,20 @@ public class Estoque {
 		}
 		
 	}
-	public static void listarEstoque() {
+	
+	//retorna lista
+	public static List<String> listarEstoque() {
+		List<String> listaEstoque = new ArrayList<>();
 		if (posicao!=0) {
 			for (int i=0; i<posicao; i++) {
-				System.out.println("Produto: "+produto[i].getNome()+", Quantidade: "+Estoque.quantidade[i]);
+				//System.out.println("Produto: "+produto[i].getNome()+", Quantidade: "+Estoque.quantidade[i]);
+				listaEstoque.add(Estoque.produto[i].getNome() + ", Quantidade: "+Estoque.quantidade[i]);
+				
 			}
 		}else {
 			System.out.println("Estoque vazio!!!");
 		}
-		
+		return listaEstoque;
 	}
-	public Estoque() {
-		super();
-	}
+	
 }

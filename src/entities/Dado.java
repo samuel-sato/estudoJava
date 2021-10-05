@@ -26,13 +26,5 @@ public class Dado {
 			//System.out.println(x.getNome());
 		}
 		return nome1;
-	}
-	public static List<String> nomeEstoque (){
-		List<String> nome2 = new ArrayList<String>();
-		for(int i=0; i<Estoque.posicao; i++) {
-			nome2.add(Estoque.produto[i].getNome()+ " - "+ Estoque.quantidade[i]);
-		}
-		return nome2;
-	}
-	
+	}	
 }

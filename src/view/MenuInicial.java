@@ -70,11 +70,11 @@ public class MenuInicial implements ActionListener{
 		Creme p5 = new Creme("Creme1", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
 		Sabonete p6 = new Sabonete("Sabonete1", "Dove", 15.90, "descrição sabonete", "mão",250, "cheiro");
 		
-		Estoque.adicionar(p1);
-		Estoque.adicionar(p2);
-		Estoque.adicionar(p3);
-		Estoque.adicionar(p4);
-		Estoque.adicionar(p5);
+		Estoque.adicionar(p1,5);
+		Estoque.adicionar(p2,5);
+		Estoque.adicionar(p3,5);
+		Estoque.adicionar(p4,5);
+		Estoque.adicionar(p5,5);
 		
 		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
 		Cliente c2 = new Cliente("Fernanda", "98765432", "fer@gmail.com", "098755241", "1245213425");

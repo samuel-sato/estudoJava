@@ -49,19 +49,19 @@ public class Venda {
 	
 	
 	//venda idantificada
-	public void vender(Cliente cliente, String formaPagamento, Estoque estoque) {
+	public void vender(Cliente cliente) {
 		//super();
 		this.cliente = cliente;
 		//this.produto = produto;
-		this.formaPagamento = formaPagamento;
+		//this.formaPagamento = formaPagamento;
 		this.data = LocalDateTime.now();
 		if(this.posicao==0) {
-			estoque.retirar(produto[0], quantidade[0]);
+			Estoque.retirar(produto[0], quantidade[0]);
 		} else {
 			for(int i=0; i<=this.posicao-1;i++) {
 				Produto produto = this.produto[i];
 				int unidades = this.quantidade[i];
-				estoque.retirar(produto, unidades);
+				Estoque.retirar(produto, unidades);
 			}
 		}				
 	}
@@ -71,13 +71,20 @@ public class Venda {
 		this.formaPagamento = formaPagamento;
 		this.data = LocalDateTime.now();
 		if(this.posicao==0) {
-			estoque.retirar(produto[0], quantidade[0]);
+			Estoque.retirar(produto[0], quantidade[0]);
 		} else {
 			for(int i=0; i<=this.posicao-1;i++) {
 				Produto produto = this.produto[i];
 				int unidades = this.quantidade[i];
-				estoque.retirar(produto, unidades);
+				Estoque.retirar(produto, unidades);
 			}
+		}
+	}
+	public void vender() {
+		for(int i=0; i<=this.posicao-1;i++) {
+			Produto produto = this.produto[i];
+			int unidades = this.quantidade[i];
+			Estoque.retirar(produto, unidades);
 		}
 	}
 	
@@ -90,5 +97,4 @@ public class Venda {
 	public Venda() {
 		super();
 	}
-	
 }

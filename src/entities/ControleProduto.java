@@ -34,6 +34,7 @@ public class ControleProduto {
 		if(aux==0){
 			lista.add(p);
 			System.out.println("produto adicionado");
+			Estoque.adicionar(p, 0);
 			nProduto++;
 		}
 	}

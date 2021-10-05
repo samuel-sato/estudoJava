@@ -22,38 +22,34 @@ import entities.ControleProduto;
 import entities.ControleVenda;
 import entities.Dado;
 import entities.Estoque;
+import modelo.Produto;
 import modelo.Venda;
 
 public class TelaEstoque implements ActionListener, ListSelectionListener{
 	
-private static String[] num= {"1", "2", "3", "4", "5", "6"};
-	
-	private static DefaultListModel model = new DefaultListModel();
+private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	
 	private static JFrame frame = new JFrame("Venda");
 	private static JLabel carrinho = new JLabel("Estoque");
 	private static JLabel item = new JLabel("Selecione um produto");
 
-	public static JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
+	public JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
 	private static JLabel quantidade = new JLabel("Nº");
 	
-	//private static JComboBox lCliente = new JComboBox(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
-	private static JComboBox lnumero = new JComboBox(num);
-	private static JRadioButton pix = new JRadioButton("Pix", false);
-	private static JRadioButton cartao = new JRadioButton("Cartão", false);
-	private static JRadioButton dinheiro = new JRadioButton("Dinheiro", false);
-
+	private JComboBox lnumero = new JComboBox<Object>(num);
+	
 	private static JButton adicionar = new JButton("Adicionar");
 	private static JButton retirar = new JButton("Retirar");
 	private static JButton vender = new JButton("Vender");
 	private static JButton cancelar = new JButton("Cancelar");
-	private static List<String> lista = Dado.nomeEstoque();
-	private static JList listaEstoque = new JList(lista.toArray());
+	private JList listaEstoque = new JList(Estoque.listarEstoque().toArray());
 	
     JScrollPane scroll1 = new JScrollPane(listaEstoque);
     
     
 	public TelaEstoque() {
+		
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		
 		frame.setSize(600, 300);
 		frame.setLayout(null);
@@ -81,9 +77,6 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 		
 		frame.setVisible(true);
 		
-		pix.addActionListener(this);
-		cartao.addActionListener(this);
-		dinheiro.addActionListener(this);
 		adicionar.addActionListener(this);
 		vender.addActionListener(this);
 		cancelar.addActionListener(this);
@@ -94,39 +87,32 @@ private static String[] num= {"1", "2", "3", "4", "5", "6"};
 
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
 		Object src = arg0.getSource();
-	
+		int num = lnumero.getSelectedIndex();
 		if(src == adicionar) {
-			Estoque.adicionarVariasUnidades(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			//Estoque.listarEstoque();
-			listaEstoque.setListData(Dado.nomeEstoque().toArray());
+			
+			Estoque.adicionar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
+	
+			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
+			//lnumero.setSelectedIndex(0);
+			 
 		}
 		if (src == retirar) {
-			Estoque.retirar(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			listaEstoque.setListData(Dado.nomeEstoque().toArray());
+			Estoque.retirar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
+	
+			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
-			//Estoque.listarEstoque();
+			 
+			//lnumero.setSelectedIndex(0);
 		}
-		
-		/*
-		if(src == cancelar) {
-			frame.dispose();
-			model.clear();
-			cartao.setSelected(false);
-			pix.setSelected(false);
-			dinheiro.setSelected(false);
-		}
-		*/
-		
+		num = 0;
 	}
 
 }

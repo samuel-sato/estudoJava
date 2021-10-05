@@ -28,7 +28,7 @@ import modelo.Venda;
 
 public class TelaVenda implements ActionListener, ListSelectionListener {
 	
-	private static String[] num= {"1", "2", "3", "4", "5", "6"};
+	private static String[] num= {"0","1", "2", "3", "4", "5", "6"};
 	
 	private static DefaultListModel model = new DefaultListModel();
 	
@@ -141,8 +141,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			v.setFormaPagamento(dinheiro.getText());
 		}
 		if(src == adicionar) {
-			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()+1));
-			model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()+1));
+			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()));
+			model.addElement(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()));
 		}
 		if(src == vender) {
 			v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
@@ -153,19 +153,21 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				JOptionPane.showMessageDialog(null, "Nenhuma forma de pagamento selecionada");
 				
 			} else {
-				
+				/*
 				for (int i = 0;i<model.getSize(); i++) {
 					
 					System.out.println(model.get(i));
 				}
 				System.out.println();
+				*/
 				v.listaProdutos();
-				ControleVenda.adicionar(v);
+				
+				//System.out.println(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
+				v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
+				v.vender();
 				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 				model.clear();
-				
-				
-				//ControleVenda.exibir();
+				ControleVenda.adicionar(v);
 			}
 		}
 		if(src == cancelar) {
