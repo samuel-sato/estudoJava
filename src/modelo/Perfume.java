@@ -1,9 +1,14 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Perfume extends Produto{
 	private int volume;
 	private String genero;
 	private String familiaOufativa;
+	
+	private static List<Perfume> listaPerfumes= new ArrayList<>();
 	
 	public int getVolume() {
 		return volume;

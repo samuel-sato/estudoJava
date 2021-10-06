@@ -55,6 +55,10 @@ public class Cliente {
 			return false;
 		}
 	}
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+", Telefone: "+this.telefone+", Email: "+this.email+", CPF: "+this.CPF+", CEP:"+this.CEP;
+	}
 	
 	
 }

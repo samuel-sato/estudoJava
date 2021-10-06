@@ -22,6 +22,7 @@ public class MenuInicial implements ActionListener{
 	private static JButton produto = new JButton("Produto");
 	private static JButton catalogo = new JButton("Catalogo");
 	private static JButton relatorio = new JButton("Relatório");
+	private static JButton busca = new JButton("Busca");
 	private static JButton estoque = new JButton("Estoque");
 
 	public MenuInicial() {
@@ -37,16 +38,15 @@ public class MenuInicial implements ActionListener{
 		cliente.setBounds(310, 100, 100, 30);
 		produto.setBounds(200, 160, 100, 30);
 		
-		//catalogo.setBounds(140, 160, 100, 30);
-		//relatorio.setBounds(250, 160, 100, 30);
 		estoque.setBounds(310, 160, 100, 30);
+		busca.setBounds(250, 210, 100, 30);
 		
 		frame.add(titulo);
 		frame.add(venda);
 		frame.add(cliente);
 		frame.add(produto);
-		//frame.add(catalogo);
-		//frame.add(relatorio);
+		frame.add(busca);
+	
 		frame.add(estoque);
 		
 		
@@ -61,20 +61,36 @@ public class MenuInicial implements ActionListener{
 		produto.addActionListener(menu);
 		catalogo.addActionListener(menu);
 		relatorio.addActionListener(menu);
+		busca.addActionListener(menu);
 		estoque.addActionListener(menu);
 		
 		Perfume p1 = new Perfume("Perfume1", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p2 = new Perfume("Perfume2", "MARCA", 99.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p3 = new Perfume("Perfume3", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
 		Perfume p4 = new Perfume("Perfume4", "MARCA2", 199.99, "DESCRIÇÂO PERFUME",500, "MASCULINO", "LAVANDA");
-		Creme p5 = new Creme("Creme1", "marcacreme", 15.98, "descricao", "pele", "rosto", 500);
-		Sabonete p6 = new Sabonete("Sabonete1", "Dove", 15.90, "descrição sabonete", "mão",250, "cheiro");
+		Creme p5 = new Creme("Creme1", "marcacreme", 15.98, "descricao creme1", "pele", "rosto", 500);
+		Creme p6 = new Creme("Creme2", "marcacreme", 15.98, "descricao creme2", "pele", "rosto", 500);
+		Creme p7 = new Creme("Creme3", "marcacreme", 15.98, "descricao creme3", "pele", "rosto", 500);
+		Creme p8 = new Creme("Creme4", "marcacreme", 15.98, "descricao creme4", "pele", "rosto", 500);
+		Sabonete p9 = new Sabonete("Sabonete1", "Dove", 15.90, "descrição sabonete1", "mão",250, "cheiro");
+		Sabonete p10 = new Sabonete("Sabonete2", "Dove", 15.90, "descrição sabonete2", "mão",250, "cheiro");
+		Sabonete p11 = new Sabonete("Sabonete3", "Dove", 15.90, "descrição sabonete3", "mão",250, "cheiro");
+		Sabonete p12 = new Sabonete("Sabonete4", "Dove", 15.90, "descrição sabonete4", "mão",250, "cheiro");
 		
 		Estoque.adicionar(p1,5);
 		Estoque.adicionar(p2,5);
 		Estoque.adicionar(p3,5);
 		Estoque.adicionar(p4,5);
 		Estoque.adicionar(p5,5);
+		Estoque.adicionar(p6,5);
+		Estoque.adicionar(p7,5);
+		Estoque.adicionar(p8,5);
+		Estoque.adicionar(p9,5);
+		Estoque.adicionar(p10,5);
+		Estoque.adicionar(p11,5);
+		Estoque.adicionar(p12,5);
+		
+		
 		
 		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
 		Cliente c2 = new Cliente("Fernanda", "98765432", "fer@gmail.com", "098755241", "1245213425");
@@ -116,6 +132,9 @@ public class MenuInicial implements ActionListener{
 		}
 		if(src == estoque) {
 			new TelaEstoque();
+		}
+		if(src == busca) {
+			new TelaBusca();
 		}
 	}
 }

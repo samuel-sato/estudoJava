@@ -1,29 +1,20 @@
 package view;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import entities.ControleProduto;
-import entities.ControleVenda;
 import entities.Dado;
 import entities.Estoque;
-import modelo.Produto;
-import modelo.Venda;
 
 public class TelaEstoque implements ActionListener, ListSelectionListener{
 	
@@ -34,6 +25,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	private static JLabel item = new JLabel("Selecione um produto");
 
 	public JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
+	
 	private static JLabel quantidade = new JLabel("Nº");
 	
 	private JComboBox lnumero = new JComboBox<Object>(num);
@@ -50,6 +42,8 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
     
     
 	public TelaEstoque() {
+		
+		lItem.scrollRectToVisible(5);
 		
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		
@@ -99,6 +93,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	public void actionPerformed(ActionEvent arg0) {
 		
 		Object src = arg0.getSource();
+		System.out.println(src);
 		int num = lnumero.getSelectedIndex();
 		if(src == adicionar) {
 			
@@ -119,6 +114,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		}
 		if(src == atualizar) {
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
+			//lItem.
 			listaEstoque.updateUI();
 		}
 		num = 0;

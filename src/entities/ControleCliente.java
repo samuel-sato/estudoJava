@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 import modelo.Cliente;
+import modelo.Produto;
 
 
 public class ControleCliente {
@@ -49,6 +50,23 @@ public class ControleCliente {
 		for (Cliente x: ControleCliente.listaCliente) {
 			System.out.println(x.getNome());
 		}
+	}
+	
+	public static String buscar(String nome) {
+		String resultado = "Não há clientes com esse nome";
+		int aux =0;
+		for (Cliente x: listaCliente) {
+			if(x.getNome().equalsIgnoreCase(nome)) {
+				resultado = x.toString();
+				aux++; 
+			}
+		}
+		if (aux != 0) {
+			return resultado;
+		}else {
+			return resultado;
+		}
+		
 	}
 	public int getnCliente() {
 		return nCliente;

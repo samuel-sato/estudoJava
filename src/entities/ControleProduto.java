@@ -48,10 +48,26 @@ public class ControleProduto {
 		nProduto--;
 	}
 	
-	public void exibir() {
+	public static void exibir() {
 		for (Produto x: lista) {
 			System.out.println(x.getNome());
 		}
+	}
+	public static String buscar(String nome) {
+		String resultado = "Não há produtos com esse nome";
+		int aux =0;
+		for (Produto x: lista) {
+			if(x.getNome().equalsIgnoreCase(nome)) {
+				resultado = x.toString();
+				aux++; 
+			}
+		}
+		if (aux != 0) {
+			return resultado;
+		}else {
+			return resultado;
+		}
+		
 	}
 	
 	

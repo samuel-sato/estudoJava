@@ -48,4 +48,8 @@ public abstract class Produto {
 			return false;
 		}
 	}
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+", Marca: "+this.marca+", Preço: "+this.preco+", Descrição: "+this.descricao;
+	}
 }
