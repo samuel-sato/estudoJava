@@ -25,7 +25,7 @@ public class Creme extends Produto{
 		this.massa = massa;
 	}
 	public Creme(String nome, String marca, double preco, String descricao, String tipoPele, String tipoCreme, int massa) {
-		
+		this.ID=Produto.geraID();
 		this.nome=nome;
 		this.marca=marca;
 		this.preco=preco;

@@ -64,8 +64,7 @@ public class TelaBusca implements  ActionListener {
 			} else{
 				System.out.println(ControleCliente.buscar(nome));
 				labelResultado.setText(ControleCliente.buscar(nome));
-				//ControleCliente.buscar(nome)
-				//System.out.println("TESTE");
+
 			}
 			
 		

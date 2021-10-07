@@ -42,6 +42,7 @@ public class ControleProduto {
 		lista.remove(pos);
 		lista.add(pos, p);
 		System.out.println("Produto alterado! ");
+		//Estoque.listarEstoque().
 	}
 	public static void excluir(int i) {
 		lista.remove(i);
@@ -69,38 +70,11 @@ public class ControleProduto {
 		}
 		
 	}
-	
-	
-	/*
-	public void adicionarProduto(Produto p) {
-		if (this.nProduto == 0) {
-			this.listaProdutos[0] = p;
-			p.setID(this.nProduto);
-			this.nProduto++;
-		} else {
-			for (int i=0; i<=this.nProduto;i++) {
-				if(this.listaProdutos[i].equals(p)) {
-					System.out.println("Produto já adicionado");
-					aux++;
-				} 
-			}
-			if(aux==0) {
-				this.listaProdutos[this.nProduto] = p;
-				p.setID(this.nProduto);
-				this.nProduto++;
-			}
+	public static void listar() {
+		for (Produto p:lista) {
+			System.out.println(p.getNome());
 		}
 	}
-	
-	public void editarProduto(Produto p, int pos) {
-		this.listaProdutos[pos] = p;
-	}
-	
-	public void excluirProduto() {
-		
-	}
-	*/
-
 	public int getnProduto() {
 		return nProduto;
 	}

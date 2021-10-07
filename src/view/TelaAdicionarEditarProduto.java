@@ -14,10 +14,12 @@ import javax.swing.event.ListSelectionListener;
 
 import entities.ControleCliente;
 import entities.ControleProduto;
+import entities.Estoque;
 import modelo.Cliente;
 import modelo.Creme;
 import modelo.Kit;
 import modelo.Perfume;
+import modelo.Produto;
 import modelo.Sabonete;
 
 public class TelaAdicionarEditarProduto implements ActionListener, ListSelectionListener{
@@ -307,6 +309,9 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
+		
+		Object obj = ControleProduto.lista.get(TelaAdicionarEditarProduto.index);
+		Produto x = (Produto) obj;
 		if(src == cadastrar) {
 			
 			if(TelaAdicionarEditarProduto.aux==1) {
@@ -327,23 +332,30 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 			JOptionPane.showMessageDialog(null, "Produto Adicionado!");
 		}
 		if(src == enviar) {
-			if(ControleProduto.lista.get(TelaAdicionarEditarProduto.index).getClass() == Perfume.class) {
+			
+			if(obj.getClass() == Perfume.class) {
 				Perfume p = new Perfume(String.valueOf(tNome.getText()), String.valueOf(tMarca.getText()), Double.valueOf(tPreco.getText()), String.valueOf(tDescricao.getText()), Integer.valueOf(this.tVolume.getText()), String.valueOf(tGenero.getText()), String.valueOf(tFamiliaOufativa.getText()));
 				ControleProduto.editar(TelaAdicionarEditarProduto.index, p);
+				Estoque.editarProduto(x.getID(), p);
 			}
-			if(ControleProduto.lista.get(TelaAdicionarEditarProduto.index).getClass() == Sabonete.class) {
+			if(obj.getClass() == Sabonete.class) {
 				Sabonete s = new Sabonete(String.valueOf(tNome.getText()), String.valueOf(tMarca.getText()), Double.valueOf(tPreco.getText()), String.valueOf(tDescricao.getText()), String.valueOf(tTipo.getText()), Integer.valueOf(tVolume.getText()), String.valueOf(tPiramideOufativa.getText()));
 				ControleProduto.editar(TelaAdicionarEditarProduto.index, s);
+				Estoque.editarProduto(x.getID(), s);
 			}
-			if(ControleProduto.lista.get(TelaAdicionarEditarProduto.index).getClass() == Creme.class) {
+			if(obj.getClass() == Creme.class) {
 				Creme c = new Creme(String.valueOf(tNome.getText()), String.valueOf(tMarca.getText()), Double.valueOf(tPreco.getText()), String.valueOf(tDescricao.getText()), String.valueOf(tTipoPele.getText()), String.valueOf(tTipo.getText()), Integer.valueOf(tMassa.getText()));
 				ControleProduto.editar(TelaAdicionarEditarProduto.index, c);
+				Estoque.editarProduto(x.getID(), c);
 			}
-			if(ControleProduto.lista.get(TelaAdicionarEditarProduto.index).getClass() == Kit.class) {
+			if(obj.getClass() == Kit.class) {
 				
 				//ControleProduto.editar(TelaAdicionarEditarProduto.index, p);
 			}
-			//ControleProduto.editar(TelaAdicionarEditarProduto.index, p);
+			
+			//System.out.println(p.toString());
+			
+			
 			frame.dispose();
 			JOptionPane.showMessageDialog(null, "Produto Editado!");
 			
@@ -352,6 +364,8 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
 			ControleProduto.excluir(TelaAdicionarEditarProduto.index); 
 			frame.dispose();
 			JOptionPane.showMessageDialog(null, "Produto Deletado!"); 
+			//Estoque.editarProduto(x.getID(), null);
+			Estoque.excluir(x.getID());
 		}
 	}
 

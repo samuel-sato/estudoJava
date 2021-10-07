@@ -71,7 +71,13 @@ public class Venda {
 		//listaProdutos();
 		System.out.println();
 	}
-	
+	public double precoTotal() {
+		int preco = 0; 
+		for(int i=0; i<=posicao-1;i++) {
+			preco += produto[i].getPreco();
+		}
+		return preco;
+	}
 	
 	//venda idantificada
 	public void vender(Cliente cliente) {
@@ -129,10 +135,6 @@ public class Venda {
 	}
 	
 	public void listaProdutos() {
-		for(int i=0; i<=posicao-1;i++) {
-			//System.out.println(this.produto[i]+" : "+this.quantidade[i]);
-			
-			//System.out.println(carrinho.get(i));
-		}
-	}	
+		
+	}
 }

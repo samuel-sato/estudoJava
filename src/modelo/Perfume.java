@@ -31,6 +31,7 @@ public class Perfume extends Produto{
 	
 	public Perfume(String nome, String marca, double preco, String descricao,int volume, String genero, String familiaOufativa) {
 		//super();
+		this.ID = Produto.geraID();
 		this.nome = nome;
 		this.marca = marca;
 		this.preco = preco;

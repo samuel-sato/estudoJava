@@ -99,6 +99,7 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 				lista1.setListData(Dado.nomeProduto(ControleProduto.lista).toArray());
 				lista1.updateUI();
 				
+								
 			} catch (IndexOutOfBoundsException ex){
 			
 			}	

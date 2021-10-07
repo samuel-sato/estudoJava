@@ -32,6 +32,7 @@ public class Sabonete extends Produto{
 		this.piramideOufativa = piramideOufativa;
 	}
 	public Sabonete(String nome, String marca, double preco, String descricao,String tipo, int massa, String piramideOufativa) {
+		this.ID=Produto.geraID();
 		this.nome=nome;
 		this.marca=marca;
 		this.preco=preco;

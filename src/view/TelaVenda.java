@@ -23,12 +23,14 @@ import entities.ControleCliente;
 import entities.ControleProduto;
 import entities.ControleVenda;
 import entities.Dado;
+import entities.Estoque;
+import modelo.Produto;
 import modelo.Venda;
 
 
 public class TelaVenda implements ActionListener, ListSelectionListener {
 	
-	private static String[] num= {"0","1", "2", "3", "4", "5", "6"};
+	private static String[] num= {"1", "2", "3", "4", "5", "6"};
 	
 	private static List<String> model = new ArrayList<>();
 	
@@ -37,10 +39,14 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static JLabel item = new JLabel("Selecione um produto");
 	private static JLabel cliente = new JLabel("Selecione um cliente");
 	private static JLabel total = new JLabel("TOTAL:");
-	public static JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
-	private static JLabel quantidade = new JLabel("Nº");
 	
-	private static JComboBox lCliente = new JComboBox(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+	private static JLabel quantidade = new JLabel("Nº");
+	private static List<String> boxCliente = Dado.nomeCliente(ControleCliente.listaCliente);
+	private static JComboBox lCliente = new JComboBox(boxCliente.toArray());
+	private static List<String> boxProduto = Estoque.listaParaVenda();
+	private static JComboBox<String> lItem= new JComboBox(boxProduto.toArray());
+	
+	
 	private static JComboBox lnumero = new JComboBox(num);
 	private static JRadioButton pix = new JRadioButton("Pix", false);
 	private static JRadioButton cartao = new JRadioButton("Cartão", false);
@@ -51,6 +57,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static JButton adicionar = new JButton("Adicionar Item");
 	private static JButton vender = new JButton("Vender");
 	private static JButton cancelar = new JButton("Cancelar");
+	private static JButton atualizar = new JButton("Atualizar");
 	private static JList listaCarrinho = new JList(model.toArray());
 	
     JScrollPane scroll1 = new JScrollPane(listaCarrinho);  
@@ -95,6 +102,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		cancelar.setBounds(300, 205, 100, 20);
 		vender.setBounds(440, 205, 100, 20);
 		total.setBounds(50, 205, 100, 20);
+		atualizar.setBounds(170, 205, 100, 20);
 		
 		frame.add(cliente);
 		frame.add(lCliente);
@@ -112,6 +120,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		frame.add(vender);
 		frame.add(cancelar);
 		frame.add(total);
+		frame.add(atualizar);
 		
 		frame.add(carrinho);
 		frame.add(scroll1);
@@ -125,6 +134,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		vender.addActionListener(this);
 		cancelar.addActionListener(this);
 		lItem.addActionListener(this);
+		atualizar.addActionListener(this);
 	}
 	
 
@@ -156,9 +166,12 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		}
 		
 		if(src == adicionar) {
-			System.out.println(src);
-			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), (lnumero.getSelectedIndex()));
-			model.add(lItem.getSelectedItem()+" - "+(lnumero.getSelectedIndex()));
+			
+			String s = (String) lnumero.getSelectedItem();
+			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), Integer.parseInt(s));
+			
+			model.add(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
+			System.out.println(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
 			listaCarrinho.setListData(model.toArray());
 		
 		}
@@ -171,13 +184,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				JOptionPane.showMessageDialog(null, "Nenhuma forma de pagamento selecionada");
 				
 			} else {
-				/*
-				for (int i = 0;i<model.getSize(); i++) {
-					
-					System.out.println(model.get(i));
-				}
-				System.out.println();
-				*/
 				v.listaProdutos();
 				
 				v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
@@ -185,13 +191,9 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 				model.clear();
 				ControleVenda.adicionar(v);
-				Venda.setPosicao();
-				
-					
+				Venda.setPosicao();					
 			}
 		}
-		
-		
 		if(src == cancelar) {
 			frame.dispose();
 			model.clear();
@@ -201,6 +203,24 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			model.clear();
 			listaCarrinho.setListData(model.toArray());
 			
-		}		
+		}
+		if(src == atualizar) {
+			System.out.println("TESTE");
+			//lItem = new JComboBox(boxProduto.toArray());
+			ControleProduto.listar();
+			total.setText("TOTAL: "+v.precoTotal());
+			lItem.removeAllItems();
+			for (int i=0;i<Estoque.getPosicao(); i++) {
+				try {
+					Produto[] p = Estoque.getProduto();
+					lItem.addItem(p[i].getNome());
+				}catch(NullPointerException ex) {
+				}
+			}
+			
+			
+			
+			
+		}
 	}
 }

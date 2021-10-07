@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Random;
+
 public abstract class Produto {
 	
 	protected int ID;
@@ -7,6 +9,13 @@ public abstract class Produto {
 	protected String marca;
 	protected double preco;
 	protected String descricao;
+	private static Random gerador = new Random();
+	
+	
+	public static int geraID() {
+		return gerador.nextInt(200);
+		
+	}
 	
 	
 	public int getID() {

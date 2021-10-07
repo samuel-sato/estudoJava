@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import javax.swing.event.ListSelectionListener;
 import entities.ControleProduto;
 import entities.Dado;
 import entities.Estoque;
+import modelo.Produto;
 
 public class TelaEstoque implements ActionListener, ListSelectionListener{
 	
@@ -23,8 +25,8 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	private static JFrame frame = new JFrame("Venda");
 	private static JLabel carrinho = new JLabel("Estoque");
 	private static JLabel item = new JLabel("Selecione um produto");
-
-	public JComboBox lItem = new JComboBox(Dado.nomeProduto(ControleProduto.lista).toArray());
+	private static List<String> teste = Dado.nomeProduto(ControleProduto.lista);
+	private static JComboBox lItem = new JComboBox(teste.toArray());
 	
 	private static JLabel quantidade = new JLabel("Nº");
 	
@@ -43,7 +45,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
     
 	public TelaEstoque() {
 		
-		lItem.scrollRectToVisible(5);
+		//lItem.scrollRectToVisible();
 		
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		
@@ -96,7 +98,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		System.out.println(src);
 		int num = lnumero.getSelectedIndex();
 		if(src == adicionar) {
-			
+			System.out.println(lItem.getSelectedIndex());
 			Estoque.adicionar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
 	
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
@@ -105,6 +107,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 			 
 		}
 		if (src == retirar) {
+			
 			Estoque.retirar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
 	
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
@@ -113,9 +116,22 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 			//lnumero.setSelectedIndex(0);
 		}
 		if(src == atualizar) {
+			
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
-			//lItem.
 			listaEstoque.updateUI();
+			teste = Dado.nomeProduto(ControleProduto.lista);
+			System.out.println("Atualização");
+			System.out.println();
+			ControleProduto.listar();
+			System.out.println();
+			lItem.removeAllItems();
+			for (int i=0;i<Estoque.getPosicao(); i++) {
+				try {
+					Produto[] p = Estoque.getProduto();
+					lItem.addItem(p[i].getNome());
+				}catch(NullPointerException ex) {
+				}
+			}
 		}
 		num = 0;
 	}

@@ -90,6 +90,20 @@ public class MenuInicial implements ActionListener{
 		Estoque.adicionar(p11,5);
 		Estoque.adicionar(p12,5);
 		
+		ControleProduto.adicionar(p1);
+		ControleProduto.adicionar(p2);
+		ControleProduto.adicionar(p3);
+		ControleProduto.adicionar(p4);
+		ControleProduto.adicionar(p5);
+		ControleProduto.adicionar(p6);
+		ControleProduto.adicionar(p7);
+		ControleProduto.adicionar(p8);
+		ControleProduto.adicionar(p9);
+		ControleProduto.adicionar(p10);
+		ControleProduto.adicionar(p11);
+		ControleProduto.adicionar(p12);
+		
+		
 		
 		
 		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
@@ -107,12 +121,7 @@ public class MenuInicial implements ActionListener{
 		ControleCliente.adicionar(c5);
 		ControleCliente.adicionar(c6);
 
-		ControleProduto.adicionar(p1);
-		ControleProduto.adicionar(p2);
-		ControleProduto.adicionar(p3);
-		ControleProduto.adicionar(p4);
-		ControleProduto.adicionar(p5);
-		ControleProduto.adicionar(p6);
+
 		
 		System.out.println();
 	}
