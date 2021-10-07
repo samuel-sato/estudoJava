@@ -5,7 +5,7 @@ import java.util.List;
 
 import modelo.Venda;
 
-public class ControleVenda {
+public class DadoVenda {
 	
 	private static int nVenda=0;
 	private static int aux=0;

@@ -13,8 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import entities.ControleProduto;
-import entities.Dado;
+import entities.DadoProduto;
 import entities.Estoque;
 import modelo.Produto;
 
@@ -25,7 +24,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 	private static JFrame frame = new JFrame("Venda");
 	private static JLabel carrinho = new JLabel("Estoque");
 	private static JLabel item = new JLabel("Selecione um produto");
-	private static List<String> teste = Dado.nomeProduto(ControleProduto.lista);
+	private static List<String> teste = DadoProduto.nomeProduto();
 	private static JComboBox lItem = new JComboBox(teste.toArray());
 	
 	private static JLabel quantidade = new JLabel("Nº");
@@ -99,7 +98,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		int num = lnumero.getSelectedIndex();
 		if(src == adicionar) {
 			System.out.println(lItem.getSelectedIndex());
-			Estoque.adicionar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
+			Estoque.adicionar(DadoProduto.getProduto(lItem.getSelectedIndex()), (num));
 	
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
@@ -108,7 +107,7 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 		}
 		if (src == retirar) {
 			
-			Estoque.retirar(ControleProduto.lista.get(lItem.getSelectedIndex()), (num));
+			Estoque.retirar(DadoProduto.getProduto(lItem.getSelectedIndex()), (num));
 	
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
@@ -119,10 +118,10 @@ private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};
 			
 			listaEstoque.setListData(Estoque.listarEstoque().toArray());
 			listaEstoque.updateUI();
-			teste = Dado.nomeProduto(ControleProduto.lista);
+			teste = DadoProduto.nomeProduto();
 			System.out.println("Atualização");
 			System.out.println();
-			ControleProduto.listar();
+			DadoProduto.listar();
 			System.out.println();
 			lItem.removeAllItems();
 			for (int i=0;i<Estoque.getPosicao(); i++) {

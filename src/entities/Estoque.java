@@ -3,6 +3,8 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import modelo.Creme;
 import modelo.Kit;
 import modelo.Perfume;
@@ -38,9 +40,7 @@ public class Estoque {
 			if(produto[i].getID() == id) {
 				produto[i] = p;
 			}
-		}
-		listarEstoque();
-		
+		}		
 	}
 	
 	public static void adicionar(Produto p, int quantid) {
@@ -56,10 +56,8 @@ public class Estoque {
 						Estoque.quantidade[i]+=quantid;
 						aux++;
 					}
-				}catch(NullPointerException ex) {
-					
-				}
-				 
+				}catch(NullPointerException ex) {	
+				}		 
 			}
 			if (aux==0) {
 				Estoque.produto[posicao]=p;
@@ -67,50 +65,32 @@ public class Estoque {
 				posicao++;
 			}
 		}
-		/*
-		for (int i=0; i<posicao; i++) {
-			try {
-				if (Estoque.produto[i].equals(p)) {
-					if(Estoque.quantidade[i]>=quantidade) {
-						Estoque.quantidade[i]-=quantidade;
-						System.out.println("Produto retirado");
-		
-					} else if(Estoque.quantidade[i]==0) {
-						System.out.println("Não tem o produto no estoque");
-					} else {
-						System.out.println("Não tem tantos produtos em estoque");
-					}				
-				} else {
-					System.out.println("Não tem esse produto");
-				}
-			} catch (NullPointerException ex) {
-				
-			}
-			
-		}
-		*/
 	}
-	public static void retirar(Produto p, int quantidade) {
-	
+	public static boolean retirar(Produto p, int quantidade) {
+		int aux = 0; 
 		for (int i=0; i<posicao; i++) {
 			try {
 				if (Estoque.produto[i].equals(p)) {
 					if(Estoque.quantidade[i]>=quantidade) {
 						Estoque.quantidade[i]-=quantidade;
 						System.out.println("Produto retirado");
+						aux++;
+						return true;
 		
 					} else if(Estoque.quantidade[i]==0) {
-						System.out.println("Não tem o produto no estoque");
+						return false;
 					} else {
-						System.out.println("Não tem tantos produtos em estoque");
+						return false;
 					}				
-				} else {
-					System.out.println("Não tem esse produto");
-				}
-			} catch (NullPointerException ex) {
-				
+				} 
+			} catch (NullPointerException ex) { 
 			}
-			
+		}
+		if(aux != 0){
+			JOptionPane.showMessageDialog(null, "Não tem esse produto");
+			return false;
+		}else {
+			return true;
 		}
 	}
 	public static void excluir(int id) {
@@ -120,12 +100,12 @@ public class Estoque {
 					produto[i]=null;
 					//posicao--;
 				}
-			} catch(NullPointerException ex) {
-				
+			} catch(NullPointerException ex) {	
 			}
-			
 		}
 	}
+	
+	
 	//retorna lista
 	public static List<String> listarEstoque() {
 		List<String> listaEstoque = new ArrayList<>();
@@ -144,6 +124,8 @@ public class Estoque {
 		}
 		return listaEstoque;
 	}
+	
+	
 	public static List<String> listaParaVenda(){
 		List<String> listaVenda = new ArrayList<>();
 		for (int i=0; i<posicao; i++) {
@@ -157,5 +139,4 @@ public class Estoque {
 		}
 		return listaVenda; 
 	}
-	
 }

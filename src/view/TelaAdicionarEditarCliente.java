@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import entities.ControleCliente;
+import entities.DadoCliente;
 import modelo.Cliente;
 
 public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectionListener {
@@ -62,11 +62,11 @@ public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectio
     	enviar.setBounds(100, 200, 150, 30);
     	
     	if(i == 2) {
-    		this.tNome = new JTextField(String.valueOf(ControleCliente.listaCliente.get(index).getNome()), 40);
-    		this.tEmail = new JTextField(String.valueOf(ControleCliente.listaCliente.get(index).getEmail()),40);
-    		this.tTel = new JTextField(String.valueOf(ControleCliente.listaCliente.get(index).getTelefone()),40);
-    		this.tCPF = new JTextField(String.valueOf(ControleCliente.listaCliente.get(index).getCPF()),40);
-    		this.tCEP = new JTextField(String.valueOf(ControleCliente.listaCliente.get(index).getCEP()),40);
+    		this.tNome = new JTextField(String.valueOf(DadoCliente.getCliente(index).getNome()), 40);
+    		this.tEmail = new JTextField(String.valueOf(DadoCliente.getCliente(index).getEmail()),40);
+    		this.tTel = new JTextField(String.valueOf(DadoCliente.getCliente(index).getTelefone()),40);
+    		this.tCPF = new JTextField(String.valueOf(DadoCliente.getCliente(index).getCPF()),40);
+    		this.tCEP = new JTextField(String.valueOf(DadoCliente.getCliente(index).getCEP()),40);
         	
         	
         	deletar = new JButton("Deletar");
@@ -135,19 +135,19 @@ public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectio
 		Object src = e.getSource();
 		
 		if(src == enviar) {
-			System.out.println(String.valueOf(tNome.getText()));
+			//System.out.println(String.valueOf(tNome.getText()));
 			Cliente c = new Cliente(String.valueOf(tNome.getText()), String.valueOf(tTel.getText()), String.valueOf(tEmail.getText()), String.valueOf(tCPF.getText()), String.valueOf(tCEP.getText()));
-			ControleCliente.adicionar(c);
+			DadoCliente.adicionar(c);
 			//ControleCliente.exibir();
 			JOptionPane.showMessageDialog(null, "Cliente adicionado!");
 		}
 		if(src == editar) {
 			Cliente c = new Cliente(String.valueOf(tNome.getText()), String.valueOf(tTel.getText()), String.valueOf(tEmail.getText()), String.valueOf(tCPF.getText()), String.valueOf(tCEP.getText()));
-			ControleCliente.editar(this.index, c);
+			DadoCliente.editar(this.index, c);
 			JOptionPane.showMessageDialog(null, "Editado!");
 		}
 		if(src == deletar) {
-			ControleCliente.excluir(this.index);
+			DadoCliente.excluir(this.index);
 			frame.dispose();
 			JOptionPane.showMessageDialog(null, "Cliente Deletado!"); 
 			

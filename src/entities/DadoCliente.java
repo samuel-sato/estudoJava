@@ -1,35 +1,39 @@
 package entities;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.DefaultListModel;
-
 import modelo.Cliente;
-import modelo.Produto;
+//import modelo.Produto;
 
 
-public class ControleCliente {
-	//private Cliente[] c;
+public class DadoCliente {
+
 	private static int nCliente;
 	private static int aux=0;
-
-	public static List <Cliente> listaCliente = new ArrayList<Cliente>();
-		
+	private static List <Cliente> listaCliente = new ArrayList<Cliente>();
+	
+	
+	public static int getnCliente() {
+		return nCliente;
+	}
+	public static Cliente getCliente(int i){
+		return listaCliente.get(i);
+	}
 	//Lista sem repetições
-	public static void adicionar(Cliente c) {
-		ControleCliente.aux=0;
-		for (Cliente x: ControleCliente.listaCliente) {
+	public static boolean adicionar(Cliente c) {
+		DadoCliente.aux=0;
+		for (Cliente x: DadoCliente.listaCliente) {
 			if (x.equals(c)) {
-				System.out.println("Cliente já adicionado");
-				
-				ControleCliente.aux++;
+				//System.out.println("Cliente já adicionado");
+				DadoCliente.aux++;
 			}
 		} 
-		if(ControleCliente.aux==0){
+		if(DadoCliente.aux==0){
 			listaCliente.add(c);
-			
-			System.out.println("cliente adicionado");
+			//System.out.println("cliente adicionado");
 			nCliente++;
+			return true;
+		} else {
+			return false;
 		}
 	}
 	public static void editar(int pos, Cliente c) {
@@ -41,13 +45,12 @@ public class ControleCliente {
 	}
 	public static void excluir(int i) {
 		listaCliente.remove(i);
-		
-		nCliente--;
+		//nCliente--;
 	}
 	
 	//alterar exibir 
 	public static void exibir() {
-		for (Cliente x: ControleCliente.listaCliente) {
+		for (Cliente x: DadoCliente.listaCliente) {
 			System.out.println(x.getNome());
 		}
 	}
@@ -68,11 +71,16 @@ public class ControleCliente {
 		}
 		
 	}
-	public int getnCliente() {
-		return nCliente;
+	
+	public static List<String> nomeCliente () {
+		List<String> nome = new ArrayList<String>();
+		
+		for (Cliente x: DadoCliente.listaCliente) {
+			nome.add(x.getNome());
+		}
+		return nome;
 	}
-	public ControleCliente() {
+	public DadoCliente() {
 		super();
 	}
-	
 }

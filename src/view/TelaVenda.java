@@ -19,11 +19,11 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import entities.ControleCliente;
-import entities.ControleProduto;
-import entities.ControleVenda;
-import entities.Dado;
+import entities.DadoCliente;
+import entities.DadoProduto;
+import entities.DadoVenda;
 import entities.Estoque;
+import modelo.Cliente;
 import modelo.Produto;
 import modelo.Venda;
 
@@ -41,7 +41,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static JLabel total = new JLabel("TOTAL:");
 	
 	private static JLabel quantidade = new JLabel("Nº");
-	private static List<String> boxCliente = Dado.nomeCliente(ControleCliente.listaCliente);
+	private static List<String> boxCliente = DadoCliente.nomeCliente();
 	private static JComboBox lCliente = new JComboBox(boxCliente.toArray());
 	private static List<String> boxProduto = Estoque.listaParaVenda();
 	private static JComboBox<String> lItem= new JComboBox(boxProduto.toArray());
@@ -62,15 +62,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	
     JScrollPane scroll1 = new JScrollPane(listaCarrinho);  
     
-    //getContentPane().add(botaoPanel, BorderLayout.SOUTH);
-    
 	public TelaVenda() {
-		//v= new Venda();
 
-		//listaCarrinho.setListData(model.toArray());
-		
-		
-		//frame = new JFrame("Venda");
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		
 		Venda.setPosicao();
@@ -168,7 +161,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		if(src == adicionar) {
 			
 			String s = (String) lnumero.getSelectedItem();
-			v.adicionarCarrinho(ControleProduto.lista.get(lItem.getSelectedIndex()), Integer.parseInt(s));
+			v.adicionarCarrinho(DadoProduto.getProduto(lItem.getSelectedIndex()), Integer.parseInt(s));
 			
 			model.add(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
 			System.out.println(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
@@ -176,7 +169,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		
 		}
 		if(src == vender) {
-			v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
+			v.setCliente(DadoCliente.getCliente(lCliente.getSelectedIndex()));
 			
 			if(model.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Nenhum produto no carrinho");
@@ -184,14 +177,15 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				JOptionPane.showMessageDialog(null, "Nenhuma forma de pagamento selecionada");
 				
 			} else {
-				v.listaProdutos();
+				//v.listaProdutos();
 				
-				v.setCliente(ControleCliente.listaCliente.get(lCliente.getSelectedIndex()));
-				v.vender();
-				JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
-				model.clear();
-				ControleVenda.adicionar(v);
-				Venda.setPosicao();					
+				v.setCliente(DadoCliente.getCliente(lCliente.getSelectedIndex()));
+				if(v.vender()) {
+					JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
+					DadoVenda.adicionar(v);
+					model.clear();
+					Venda.setPosicao();
+				}					
 			}
 		}
 		if(src == cancelar) {
@@ -205,9 +199,8 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			
 		}
 		if(src == atualizar) {
-			System.out.println("TESTE");
 			//lItem = new JComboBox(boxProduto.toArray());
-			ControleProduto.listar();
+			DadoProduto.listar();
 			total.setText("TOTAL: "+v.precoTotal());
 			lItem.removeAllItems();
 			for (int i=0;i<Estoque.getPosicao(); i++) {
@@ -217,9 +210,14 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 				}catch(NullPointerException ex) {
 				}
 			}
-			
-			
-			
+			lCliente.removeAllItems();
+			for (int i=0;i<DadoCliente.getnCliente()-1; i++) {
+				try {
+					Cliente c = DadoCliente.getCliente(i);
+					lCliente.addItem(c.getNome());
+				}catch(NullPointerException ex) {
+				}
+			}
 			
 		}
 	}

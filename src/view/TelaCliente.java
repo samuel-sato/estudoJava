@@ -1,6 +1,6 @@
 package view;
 
-import entities.ControleCliente;
+import entities.DadoCliente;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,6 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import entities.Dado;
 import modelo.Cliente;
 
 public class TelaCliente implements ActionListener, ListSelectionListener{
@@ -26,7 +25,7 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 	//public static List <Cliente> listaCliente = new ArrayList<Cliente>();
 
 	
-	private JList lista = new JList(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+	private JList lista = new JList(DadoCliente.nomeCliente().toArray());
 	
 	private JLabel labelNome;
     private JLabel labelTel = new JLabel("Telefone: ");
@@ -103,7 +102,7 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 			
 		}
 		if(src ==atualizar) {
-			lista.setListData(Dado.nomeCliente(ControleCliente.listaCliente).toArray());
+			lista.setListData(DadoCliente.nomeCliente().toArray());
 			lista.updateUI();
 			updateLabels((this.index)+1);
 		}
@@ -111,11 +110,11 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 	}
 	public void updateLabels(int n) {
 		try {
-			labelNome.setText("Nome: "+ControleCliente.listaCliente.get(n).getNome());
-			labelTel.setText("Telefone: "+ControleCliente.listaCliente.get(n).getTelefone());
-			labelCpf.setText("CPF: "+ControleCliente.listaCliente.get(n).getCPF());
-			labelCEP.setText("CEP: "+ControleCliente.listaCliente.get(n).getCEP());
-			labelEmail.setText("Email: "+ControleCliente.listaCliente.get(n).getEmail());
+			labelNome.setText("Nome: "+DadoCliente.getCliente(n).getNome());
+			labelTel.setText("Telefone: "+DadoCliente.getCliente(n).getTelefone());
+			labelCpf.setText("CPF: "+DadoCliente.getCliente(n).getCPF());
+			labelCEP.setText("CEP: "+DadoCliente.getCliente(n).getCEP());
+			labelEmail.setText("Email: "+DadoCliente.getCliente(n).getEmail());
 			
 		} catch (IndexOutOfBoundsException ex){
 			//updateLabels((this.index)+1);

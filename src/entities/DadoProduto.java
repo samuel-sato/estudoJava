@@ -1,24 +1,24 @@
 package entities;
 
-import modelo.Cliente;
+
 import modelo.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.stream.Collectors;
 
-import javax.swing.DefaultListModel;
 
-public class ControleProduto {
+public class DadoProduto {
 	
-	//private static Object[] listaProdutos = new Object[50];
 	private static int nProduto=0;
 	private static int aux=0;
 	
-	public static List<Produto> lista = new ArrayList<Produto>();
-	//private static DefaultListModel lista = new DefaultListModel();
-	public ControleProduto() {
+	private static List<Produto> lista = new ArrayList<Produto>();
+	
+	public DadoProduto() {
 		super();
+	}
+	public static Produto getProduto(int i) {
+		return lista.get(i);
 	}
 
 	//Lista sem repetições
@@ -33,7 +33,7 @@ public class ControleProduto {
 		} 
 		if(aux==0){
 			lista.add(p);
-			System.out.println("produto adicionado");
+			//System.out.println("produto adicionado");
 			Estoque.adicionar(p, 0);
 			nProduto++;
 		}
@@ -49,11 +49,6 @@ public class ControleProduto {
 		nProduto--;
 	}
 	
-	public static void exibir() {
-		for (Produto x: lista) {
-			System.out.println(x.getNome());
-		}
-	}
 	public static String buscar(String nome) {
 		String resultado = "Não há produtos com esse nome";
 		int aux =0;
@@ -77,6 +72,16 @@ public class ControleProduto {
 	}
 	public int getnProduto() {
 		return nProduto;
+	}
+	
+	public static List<String> nomeProduto () {
+		List<String> nome1 = new ArrayList<String>();
+		
+		for (Produto x: DadoProduto.lista) {
+			nome1.add(x.getNome()+" - "+x.getMarca());
+			//System.out.println(x.getNome());
+		}
+		return nome1;
 	}
 	
 }

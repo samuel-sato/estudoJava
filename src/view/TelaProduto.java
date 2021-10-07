@@ -9,9 +9,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import entities.ControleCliente;
-import entities.ControleProduto;
-import entities.Dado;
+
+import entities.DadoProduto;
+
 
 
 public class TelaProduto implements ActionListener, ListSelectionListener{
@@ -23,7 +23,7 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 	private static JButton novoProduto;
 	private static JButton editar;
 	private static JButton atualizar;
-	private JList lista1 = new JList(Dado.nomeProduto(ControleProduto.lista).toArray());
+	private JList lista1 = new JList(DadoProduto.nomeProduto().toArray());
 	
 	private JLabel labelNome;
     private JLabel labelMarca = new JLabel("Marca: ");
@@ -96,7 +96,7 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 		}
 		if(src ==atualizar) {
 			try {
-				lista1.setListData(Dado.nomeProduto(ControleProduto.lista).toArray());
+				lista1.setListData(DadoProduto.nomeProduto().toArray());
 				lista1.updateUI();
 				
 								
@@ -106,9 +106,9 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 		}
 	}
 	public void updateLabels(int n) {
-		labelNome.setText("Nome: "+ControleProduto.lista.get(n).getNome());
-		labelMarca.setText("Marca: "+ControleProduto.lista.get(n).getMarca());
-		labelPreco.setText("Preço: "+ControleProduto.lista.get(n).getPreco());
-		labelDescricao.setText("Descrição: "+ControleProduto.lista.get(n).getDescricao());
+		labelNome.setText("Nome: "+DadoProduto.getProduto(n).getNome());
+		labelMarca.setText("Marca: "+DadoProduto.getProduto(n).getMarca());
+		labelPreco.setText("Preço: "+DadoProduto.getProduto(n).getPreco());
+		labelDescricao.setText("Descrição: "+DadoProduto.getProduto(n).getDescricao());
 	}	
 }

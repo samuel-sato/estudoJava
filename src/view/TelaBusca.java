@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import entities.ControleCliente;
-import entities.ControleProduto;
+import entities.DadoCliente;
+import entities.DadoProduto;
 
 public class TelaBusca implements  ActionListener {
 
@@ -59,15 +59,13 @@ public class TelaBusca implements  ActionListener {
 		String nome = tNome.getText();
 		if(src == buscar) {
 			if(lnumero.getSelectedIndex()==0) {
-				System.out.println(ControleProduto.buscar(nome));
-				labelResultado.setText(ControleProduto.buscar(nome));
+				System.out.println(DadoProduto.buscar(nome));
+				labelResultado.setText(DadoProduto.buscar(nome));
 			} else{
-				System.out.println(ControleCliente.buscar(nome));
-				labelResultado.setText(ControleCliente.buscar(nome));
+				System.out.println(DadoCliente.buscar(nome));
+				labelResultado.setText(DadoCliente.buscar(nome));
 
-			}
-			
-		
+			}	
 		}
 		
 	}

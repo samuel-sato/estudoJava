@@ -8,8 +8,8 @@ import modelo.Cliente;
 import modelo.Creme;
 import modelo.Perfume;
 import modelo.Sabonete;
-import entities.ControleCliente;
-import entities.ControleProduto;
+import entities.DadoCliente;
+import entities.DadoProduto;
 import entities.Estoque;
 
 
@@ -90,18 +90,18 @@ public class MenuInicial implements ActionListener{
 		Estoque.adicionar(p11,5);
 		Estoque.adicionar(p12,5);
 		
-		ControleProduto.adicionar(p1);
-		ControleProduto.adicionar(p2);
-		ControleProduto.adicionar(p3);
-		ControleProduto.adicionar(p4);
-		ControleProduto.adicionar(p5);
-		ControleProduto.adicionar(p6);
-		ControleProduto.adicionar(p7);
-		ControleProduto.adicionar(p8);
-		ControleProduto.adicionar(p9);
-		ControleProduto.adicionar(p10);
-		ControleProduto.adicionar(p11);
-		ControleProduto.adicionar(p12);
+		DadoProduto.adicionar(p1);
+		DadoProduto.adicionar(p2);
+		DadoProduto.adicionar(p3);
+		DadoProduto.adicionar(p4);
+		DadoProduto.adicionar(p5);
+		DadoProduto.adicionar(p6);
+		DadoProduto.adicionar(p7);
+		DadoProduto.adicionar(p8);
+		DadoProduto.adicionar(p9);
+		DadoProduto.adicionar(p10);
+		DadoProduto.adicionar(p11);
+		DadoProduto.adicionar(p12);
 		
 		
 		
@@ -114,12 +114,12 @@ public class MenuInicial implements ActionListener{
 		Cliente c6 = new Cliente("Alex", "13123146", "alex@gmail.com", "8765421", "1245213425");
 		
 		
-		ControleCliente.adicionar(c1);
-		ControleCliente.adicionar(c2);
-		ControleCliente.adicionar(c3);
-		ControleCliente.adicionar(c4);
-		ControleCliente.adicionar(c5);
-		ControleCliente.adicionar(c6);
+		DadoCliente.adicionar(c1);
+		DadoCliente.adicionar(c2);
+		DadoCliente.adicionar(c3);
+		DadoCliente.adicionar(c4);
+		DadoCliente.adicionar(c5);
+		DadoCliente.adicionar(c6);
 
 
 		
