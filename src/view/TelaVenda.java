@@ -46,7 +46,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 	private static List<String> boxProduto = Estoque.listaParaVenda();
 	private static JComboBox<String> lItem= new JComboBox(boxProduto.toArray());
 	
-	
 	private static JComboBox lnumero = new JComboBox(num);
 	private static JRadioButton pix = new JRadioButton("Pix", false);
 	private static JRadioButton cartao = new JRadioButton("Cartão", false);

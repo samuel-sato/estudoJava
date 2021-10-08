@@ -41,5 +41,10 @@ public class Perfume extends Produto{
 		this.familiaOufativa = familiaOufativa;
 	}
 	
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+"; Marca: "+this.marca+"; Preço: "+this.preco+"; Descrição: "
+	+this.descricao+"; Volume: "+this.volume+"; Gênero: "+this.genero+"; Família Oufativa: "+this.familiaOufativa;
+	}
 	
 }

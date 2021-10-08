@@ -1,27 +1,50 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import entities.Estoque;
 
 public class Venda {
 	
+	private int ID;
 	private Cliente cliente;
 	public static  List<Produto> carrinho = new ArrayList<>();
 	public static List<Integer> unid = new ArrayList<>();
-	//private static Produto[] produto = new Produto[10];
-	//private static int quantidade[] = new int[10];
 	private String formaPagamento;
-	private LocalDateTime data;
+	private String dataFormatada;
+	private LocalDateTime data;// = LocalDateTime.now();
 	private static int posicao=0;
+	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private static Random gerador = new Random();
 
 	
 	public Venda() {
-		super();
+		this.ID = geraID();
+		this.dataFormatada = dtf.format(LocalDateTime.now());
+		this.data = LocalDateTime.now();
 	}
 	
+	public Venda(Cliente cliente, Produto p, int unidade, String formaPagamento) {
+		this.ID = geraID();
+		this.cliente = cliente;
+		this.formaPagamento = formaPagamento;
+		this.dataFormatada = dtf.format(LocalDateTime.now());
+		this.data = LocalDateTime.now();
+		carrinho.add(p);
+		unid.add(unidade);		
+	}
+
+	public static int geraID() {
+		return gerador.nextInt(200);
+	}
+	public int getID() {
+		return ID; 
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -38,6 +61,12 @@ public class Venda {
 		this.formaPagamento = formaPagamento;
 	}
 
+	public String getDataFormatada() {
+		return dataFormatada;
+	}
+	public void setDataFormatada(String s) {
+		this.dataFormatada = s;
+	}
 	public LocalDateTime getData() {
 		return data;
 	}
@@ -101,5 +130,15 @@ public class Venda {
 			return false;
 		}
 		
+	}
+	
+	@Override
+	public boolean equals(Object p) {
+		
+		if(this.ID == ((Venda) p).getID()) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

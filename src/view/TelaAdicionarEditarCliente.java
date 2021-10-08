@@ -47,11 +47,12 @@ public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectio
         JLabel labelEmail = new JLabel("Email: ");
         
     	//JFrame frame = new JFrame();
-    	JTextField tNome;
-    	JTextField tEmail;
-    	JTextField tTel;
-    	JTextField tCPF;
-    	JTextField tCEP;
+    	
+        //JTextField tNome;
+    	//JTextField tEmail;
+    	//JTextField tTel;
+    	//JTextField tCPF;
+    	//JTextField tCEP;
     	JLabel titulo = new JLabel("Cliente");
     	//JButton enviar, editar, deletar;
     	

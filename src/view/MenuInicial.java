@@ -1,16 +1,22 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import entities.DadoCliente;
+import entities.DadoProduto;
+import entities.DadoVenda;
+import entities.Estoque;
 import modelo.Cliente;
 import modelo.Creme;
 import modelo.Perfume;
 import modelo.Sabonete;
-import entities.DadoCliente;
-import entities.DadoProduto;
-import entities.Estoque;
+import modelo.Venda;
 
 
 public class MenuInicial implements ActionListener{
@@ -20,7 +26,7 @@ public class MenuInicial implements ActionListener{
 	private static JButton venda = new JButton("Venda");
 	private static JButton cliente = new JButton("Cliente");
 	private static JButton produto = new JButton("Produto");
-	private static JButton catalogo = new JButton("Catalogo");
+	//private static JButton catalogo = new JButton("Catalogo");
 	private static JButton relatorio = new JButton("Relatório");
 	private static JButton busca = new JButton("Busca");
 	private static JButton estoque = new JButton("Estoque");
@@ -36,16 +42,18 @@ public class MenuInicial implements ActionListener{
 		
 		venda.setBounds(200, 100, 100, 30);
 		cliente.setBounds(310, 100, 100, 30);
-		produto.setBounds(200, 160, 100, 30);
+		produto.setBounds(200, 150, 100, 30);
 		
-		estoque.setBounds(310, 160, 100, 30);
-		busca.setBounds(250, 210, 100, 30);
+		estoque.setBounds(310, 150, 100, 30);
+		busca.setBounds(310, 200, 100, 30);
+		relatorio.setBounds(200, 200, 100, 30);
 		
 		frame.add(titulo);
 		frame.add(venda);
 		frame.add(cliente);
 		frame.add(produto);
 		frame.add(busca);
+		frame.add(relatorio);
 	
 		frame.add(estoque);
 		
@@ -59,7 +67,7 @@ public class MenuInicial implements ActionListener{
 		venda.addActionListener(menu);
 		cliente.addActionListener(menu);
 		produto.addActionListener(menu);
-		catalogo.addActionListener(menu);
+		//catalogo.addActionListener(menu);
 		relatorio.addActionListener(menu);
 		busca.addActionListener(menu);
 		estoque.addActionListener(menu);
@@ -103,16 +111,12 @@ public class MenuInicial implements ActionListener{
 		DadoProduto.adicionar(p11);
 		DadoProduto.adicionar(p12);
 		
-		
-		
-		
 		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
 		Cliente c2 = new Cliente("Fernanda", "98765432", "fer@gmail.com", "098755241", "1245213425");
 		Cliente c3 = new Cliente("Davi", "12312312", "davi@gmail.com", "0987500001", "1245213425");
 		Cliente c4 = new Cliente("Marcos", "32132132", "marcos@gmail.com", "3123", "1245213425");
 		Cliente c5 = new Cliente("Daniela", "01010101", "dani@gmail.com", "098412157500001", "1245213425");
 		Cliente c6 = new Cliente("Alex", "13123146", "alex@gmail.com", "8765421", "1245213425");
-		
 		
 		DadoCliente.adicionar(c1);
 		DadoCliente.adicionar(c2);
@@ -121,7 +125,17 @@ public class MenuInicial implements ActionListener{
 		DadoCliente.adicionar(c5);
 		DadoCliente.adicionar(c6);
 
-
+		Venda v1 = new Venda(c1, p1, 1, "dinheiro");
+		Venda v2 = new Venda(c2, p5, 3, "dinheiro");
+		v2.setDataFormatada("21/04/2021");
+		Venda v3 = new Venda(c3, p6, 2, "dinheiro");
+		v3.setDataFormatada("22/04/2020");
+		Venda v4 = new Venda(c4, p12, 4, "dinheiro");
+		
+		DadoVenda.adicionar(v1);
+		DadoVenda.adicionar(v2);
+		DadoVenda.adicionar(v3);
+		DadoVenda.adicionar(v4);
 		
 		System.out.println();
 	}
@@ -144,6 +158,9 @@ public class MenuInicial implements ActionListener{
 		}
 		if(src == busca) {
 			new TelaBusca();
+		}
+		if(src == relatorio) {
+			new TelaRelatorio();
 		}
 	}
 }

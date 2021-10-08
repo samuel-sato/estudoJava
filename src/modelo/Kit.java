@@ -32,5 +32,9 @@ public class Kit extends Produto{
 		this.creme = creme;
 	}
 	
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+", Marca: "+this.marca+", Preço: "+this.preco+", Descrição: "+this.descricao;
+	}
 	
 }

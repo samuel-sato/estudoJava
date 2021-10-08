@@ -19,12 +19,14 @@ public class Sabonete extends Produto{
 	public void setMassa(int massa) {
 		this.massa = massa;
 	}
+	
 	public int getVolume() {
 		return volume;
 	}
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
+	
 	public String getPiramideOufativa() {
 		return piramideOufativa;
 	}
@@ -42,5 +44,9 @@ public class Sabonete extends Produto{
 		//this.volume = volume;
 		this.piramideOufativa = piramideOufativa;
 	}
-	
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+"; Marca: "+this.marca+"; Preço: "+this.preco+"; Descrição: "
+	+this.descricao+ "; Tipo: "+this.tipo+"; massa: "+this.massa+"; Piramide Oufativa: "+this.piramideOufativa;
+	}
 }

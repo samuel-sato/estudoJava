@@ -46,8 +46,7 @@ public class TelaBusca implements  ActionListener {
 		frame.add(buscar);
 		frame.add(labelResultado);
 		
-		buscar.addActionListener(this);
-		
+		buscar.addActionListener(this);		
 		
 		frame.setVisible(true);
 

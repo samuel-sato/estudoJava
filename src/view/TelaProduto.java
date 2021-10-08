@@ -5,12 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //import modelo.Produto;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-
 import entities.DadoProduto;
+import modelo.Creme;
+import modelo.Perfume;
+import modelo.Sabonete;
 
 
 
@@ -88,8 +94,21 @@ public class TelaProduto implements ActionListener, ListSelectionListener{
 			new EscolhaProduto();
 		}
 		if(src == editar) {
+			System.out.println(DadoProduto.getProduto(index).getClass()+"---------"+Perfume.class);
 			try {
-				new TelaAdicionarEditarProduto(2, index);
+				if(DadoProduto.getProduto(index).getClass()==Perfume.class) {
+					new TelaAdicionarEditarProduto(1, index);
+					System.out.println("1");
+				}
+				if(DadoProduto.getProduto(index).getClass()==Sabonete.class) {
+					new TelaAdicionarEditarProduto(2, index);
+					System.out.println("2");
+				}
+				if(DadoProduto.getProduto(index).getClass()==Creme.class) {
+					new TelaAdicionarEditarProduto(3, index);
+					System.out.println("3");
+				}
+				
 			} catch(IndexOutOfBoundsException ex){
 				
 			}

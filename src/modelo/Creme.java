@@ -35,5 +35,9 @@ public class Creme extends Produto{
 		this.massa = massa;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Nome: "+this.nome+", Marca: "+this.marca+", Preço: "+this.preco+", Descrição: "
+	+this.descricao+"; Tipo Pele: "+this.tipoPele+"; Tipo Creme: "+this.tipoCreme+"; Massa: "+this.massa;
+	}
 }

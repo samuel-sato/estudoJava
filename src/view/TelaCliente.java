@@ -35,7 +35,6 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
 	
     JScrollPane scroll = new JScrollPane(lista);
     
-
     public TelaCliente() {
     	frame = new JFrame("Clientes");
     	titulo = new JLabel("Lista de Clientes");
@@ -43,7 +42,7 @@ public class TelaCliente implements ActionListener, ListSelectionListener{
     	editar = new JButton("Editar Cliente");
     	atualizar = new JButton("Atualizar lista");
 
-    	 labelNome = new JLabel("Nome: ");
+    	labelNome = new JLabel("Nome: ");
 		frame.setSize(600, 300);
 		frame.setLayout(null);
 		
