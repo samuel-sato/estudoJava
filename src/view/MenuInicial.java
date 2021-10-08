@@ -111,6 +111,7 @@ public class MenuInicial implements ActionListener{
 		DadoProduto.adicionar(p11);
 		DadoProduto.adicionar(p12);
 		
+		Cliente c0 = new Cliente("ANONIMO", "OOOOO", "ANONIMO", "0000000", "000000");
 		Cliente c1 = new Cliente("Ana", "12345678", "ana@gmail.com", "098755241", "1245213425");
 		Cliente c2 = new Cliente("Fernanda", "98765432", "fer@gmail.com", "098755241", "1245213425");
 		Cliente c3 = new Cliente("Davi", "12312312", "davi@gmail.com", "0987500001", "1245213425");
@@ -118,6 +119,7 @@ public class MenuInicial implements ActionListener{
 		Cliente c5 = new Cliente("Daniela", "01010101", "dani@gmail.com", "098412157500001", "1245213425");
 		Cliente c6 = new Cliente("Alex", "13123146", "alex@gmail.com", "8765421", "1245213425");
 		
+		DadoCliente.adicionar(c0);
 		DadoCliente.adicionar(c1);
 		DadoCliente.adicionar(c2);
 		DadoCliente.adicionar(c3);
@@ -125,16 +127,16 @@ public class MenuInicial implements ActionListener{
 		DadoCliente.adicionar(c5);
 		DadoCliente.adicionar(c6);
 
-		Venda v1 = new Venda(c1, p1, 1, "dinheiro");
+		Venda v1 = new Venda(c1, p1, 1, "Dinheiro");
 		v1.adicionarCarrinho(p11, 2);
 		v1.vender();
-		Venda v2 = new Venda(c2, p5, 3, "dinheiro");
+		Venda v2 = new Venda(c2, p5, 3, "Cartão");
 		v2.setDataFormatada("21/04/2021");
 		v2.vender();
-		Venda v3 = new Venda(c3, p6, 2, "dinheiro");
+		Venda v3 = new Venda(c3, p6, 2, "Pix");
 		v3.setDataFormatada("22/04/2020");
 		v3.vender();
-		Venda v4 = new Venda(c4, p12, 4, "dinheiro");
+		Venda v4 = new Venda(c4, p12, 4, "Dinheiro");
 		v4.vender();
 		
 		DadoVenda.adicionar(v1);

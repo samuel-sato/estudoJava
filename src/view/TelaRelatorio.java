@@ -66,7 +66,7 @@ public class TelaRelatorio implements ActionListener {
 			new TelaEditarVenda(listaVenda.getSelectedIndex());
 		}
 		if(src == atualizar) {
-			
+			listaVenda.setListData(DadoVenda.getListaRelatorio().toArray());
 		}
 	}
 }

@@ -49,14 +49,20 @@ public class DadoVenda {
 			listaData.add(v.getDataFormatada());
 		}
 	}
-	public void editar(int pos, Venda v) {
+	public static void editar(int pos, Venda v) {
 		listaVenda.remove(pos);
 		listaVenda.add(pos, v);
 		System.out.println("venda alterada! ");
 	}
-	public void excluir(int i) {
-		listaVenda.remove(i);
-		nVenda--;
+	public static boolean excluir(int i) {
+		try {
+			listaVenda.remove(i);
+			nVenda--;
+			return true;
+		} catch(NullPointerException ex){
+			return false;
+		}
+		
 	}
 	
 	public static List<String> buscarPorData(String data) {

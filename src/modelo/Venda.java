@@ -103,8 +103,9 @@ public class Venda {
 	}
 	
 	public double precoTotal() {
-		int preco = 0; 
+		double preco = 0; 
 		for(int i=0; i<=posicao-1;i++) {
+			System.out.println(carrinho.get(i)+"-----"+unid.get(i));
 			preco += carrinho.get(i).getPreco()*unid.get(i);
 			//preco += produto[i].getPreco()*quantidade[i];
 		}
@@ -132,6 +133,7 @@ public class Venda {
 		}
 		
 	}
+	
 	
 	@Override
 	public boolean equals(Object p) {

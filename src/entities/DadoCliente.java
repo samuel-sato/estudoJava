@@ -72,6 +72,9 @@ public class DadoCliente {
 		
 	}
 	
+	public static int buscaIdentificada(Cliente c) {
+		return listaCliente.indexOf(c);
+	}
 	public static List<String> nomeCliente () {
 		List<String> nome = new ArrayList<String>();
 		

@@ -161,7 +161,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			
 			String s = (String) lnumero.getSelectedItem();
 			v.adicionarCarrinho(DadoProduto.getProduto(lItem.getSelectedIndex()), Integer.parseInt(s));
-			
+			System.out.println(DadoProduto.getProduto(lItem.getSelectedIndex())+"---------"+Integer.parseInt(s));
 			model.add(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
 			//System.out.println(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
 			listaCarrinho.setListData(model.toArray());
@@ -189,7 +189,6 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		}
 		if(src == cancelar) {
 			frame.dispose();
-			model.clear();
 			cartao.setSelected(false);
 			pix.setSelected(false);
 			dinheiro.setSelected(false);
@@ -201,6 +200,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			//lItem = new JComboBox(boxProduto.toArray());
 			//DadoProduto.listar();
 			total.setText("TOTAL: "+v.precoTotal());
+			System.out.println(v.getListaVenda().toString());
 			lItem.removeAllItems();
 			for (int i=0;i<Estoque.getPosicao(); i++) {
 				try {
