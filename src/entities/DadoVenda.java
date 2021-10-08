@@ -23,6 +23,9 @@ public class DadoVenda {
 	public static List<String> getListaData() {
 		return listaData;
 	}
+	public static List<Venda> getListaVenda(){
+		return listaVenda;
+	}
 	
 	//Lista sem repetições
 	public static void adicionar(Venda v) {
@@ -64,6 +67,24 @@ public class DadoVenda {
 			}
 		}
 		return listaBusca;
+	}
+	public static Venda buscaPorVenda(int id) {
+		Object v = new Object();
+		int i=0;
+		for (Venda x: listaVenda) {
+			if(x.getID() == id) {
+				v = x;
+				i++;
+				System.out.println(x.getListaVenda());
+			}
+		}
+		if(i==0) {
+			return null;
+		}else {
+			System.out.println((Venda) v);
+			return (Venda) v;
+		}
+		
 	}
 	
 	//alterar exibir 

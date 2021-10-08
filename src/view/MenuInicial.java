@@ -126,16 +126,26 @@ public class MenuInicial implements ActionListener{
 		DadoCliente.adicionar(c6);
 
 		Venda v1 = new Venda(c1, p1, 1, "dinheiro");
+		v1.adicionarCarrinho(p11, 2);
+		v1.vender();
 		Venda v2 = new Venda(c2, p5, 3, "dinheiro");
 		v2.setDataFormatada("21/04/2021");
+		v2.vender();
 		Venda v3 = new Venda(c3, p6, 2, "dinheiro");
 		v3.setDataFormatada("22/04/2020");
+		v3.vender();
 		Venda v4 = new Venda(c4, p12, 4, "dinheiro");
+		v4.vender();
 		
 		DadoVenda.adicionar(v1);
 		DadoVenda.adicionar(v2);
 		DadoVenda.adicionar(v3);
 		DadoVenda.adicionar(v4);
+		System.out.println(v1.getListaVenda().toString());
+		System.out.println(v2.getListaVenda().toString());
+		System.out.println(v3.getListaVenda().toString());
+		System.out.println(v4.getListaVenda().toString());
+		
 		
 		System.out.println();
 	}

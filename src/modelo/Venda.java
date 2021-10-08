@@ -12,12 +12,12 @@ public class Venda {
 	
 	private int ID;
 	private Cliente cliente;
-	public static  List<Produto> carrinho = new ArrayList<>();
-	public static List<Integer> unid = new ArrayList<>();
+	private List<Produto> carrinho = new ArrayList<>();
+	private List<Integer> unid = new ArrayList<>();
 	private String formaPagamento;
 	private String dataFormatada;
 	private LocalDateTime data;// = LocalDateTime.now();
-	private static int posicao=0;
+	private int posicao=0;
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private static Random gerador = new Random();
 
@@ -70,37 +70,38 @@ public class Venda {
 	public LocalDateTime getData() {
 		return data;
 	}
-	
-	public static void setPosicao() {
-		Venda.posicao=0;
+	public int getNProdutos() {
+		return posicao;
 	}
-
+	
+	//public static void setPosicao() {
+		//posicao=0;
+	//}
+	
+	public List<String> getListaVenda(){
+		List<String> lista = new ArrayList<>();
+		int aux = 0;
+		System.out.println();
+		
+		for (Produto x:carrinho) {
+			lista.add(x.getNome()+" - "+unid.get(aux));
+			
+			aux++;
+		}
+		
+		return lista;
+	}
+	public void setUnidades(int index, int unidades) {
+		unid.remove(index);
+		unid.add(index, unidades);
+	}
 
 	public void adicionarCarrinho(Produto p, int unidades) {
-		Venda.carrinho.add(p);
-		Venda.unid.add(unidades);
-		/*
-		if(Venda.posicao==0) {
-			
-			this.produto[0] = p;
-			this.quantidade[0] = unidades;
-			Venda.posicao++;
-			//System.out.println("aaa 1 :"+Venda.posicao);
-			//System.out.println(this.produto[0]);
-			
-		} else {
-			this.produto[Venda.posicao] = p;
-			this.quantidade[Venda.posicao] = unidades;
-			Venda.posicao++;
-			//System.out.println("aaaaaaaaa :"+Venda.posicao);
-			
-		}
-		*/
-		//System.out.println(Venda.posicao);
-		//System.out.println(this.produto[Venda.posicao]);
-		//listaProdutos();
-		//System.out.println();
+		carrinho.add(p);
+		unid.add(unidades);
+		posicao++;
 	}
+	
 	public double precoTotal() {
 		int preco = 0; 
 		for(int i=0; i<=posicao-1;i++) {
@@ -114,17 +115,17 @@ public class Venda {
 		int i=0;
 		int aux=0;
 		do {
-			Produto produto = Venda.carrinho.get(i);
-			int unidades = Venda.unid.get(i);
+			Produto produto = this.carrinho.get(i);
+			int unidades = unid.get(i);
 			System.out.println();
 			if(Estoque.retirar(produto, unidades)) {
 				aux++;
 			}
 			i++;
-		}while(i<=Venda.posicao-1);
+		}while(i<=posicao-1);
+		
 		if(aux != 0) {
-			Venda.carrinho.clear();
-			Venda.unid.clear();
+			
 			return true;
 		}else{
 			return false;

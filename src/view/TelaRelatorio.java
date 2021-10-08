@@ -58,11 +58,12 @@ public class TelaRelatorio implements ActionListener {
 		Object src = arg0.getSource();
 		
 		if(src == pesquisar) {
-			listaVenda.setListData(DadoVenda.buscarPorData((String)comboData.getSelectedItem()).toArray());
-			System.out.println(comboData.getSelectedItem());
+			new TelaFiltroVenda((String)comboData.getSelectedItem());
+			//listaVenda.setListData(DadoVenda.buscarPorData((String)comboData.getSelectedItem()).toArray());
+			//System.out.println(comboData.getSelectedItem());
 		}
 		if(src == editar) {
-			new TelaEditarVenda();
+			new TelaEditarVenda(listaVenda.getSelectedIndex());
 		}
 		if(src == atualizar) {
 			

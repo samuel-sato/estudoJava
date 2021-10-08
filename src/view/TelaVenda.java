@@ -65,9 +65,9 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 		
-		Venda.setPosicao();
-		Venda.carrinho.clear();
-		Venda.unid.clear();
+		//Venda.setPosicao();
+		//Venda.carrinho.clear();
+		//Venda.unid.clear();
 		
 		frame.setSize(600, 300);
 		frame.setLayout(null);
@@ -163,7 +163,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 			v.adicionarCarrinho(DadoProduto.getProduto(lItem.getSelectedIndex()), Integer.parseInt(s));
 			
 			model.add(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
-			System.out.println(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
+			//System.out.println(lItem.getSelectedItem()+" - "+Integer.parseInt(s));
 			listaCarrinho.setListData(model.toArray());
 		
 		}
@@ -183,7 +183,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 					JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 					DadoVenda.adicionar(v);
 					model.clear();
-					Venda.setPosicao();
+					//Venda.setPosicao();
 				}					
 			}
 		}
@@ -199,7 +199,7 @@ public class TelaVenda implements ActionListener, ListSelectionListener {
 		}
 		if(src == atualizar) {
 			//lItem = new JComboBox(boxProduto.toArray());
-			DadoProduto.listar();
+			//DadoProduto.listar();
 			total.setText("TOTAL: "+v.precoTotal());
 			lItem.removeAllItems();
 			for (int i=0;i<Estoque.getPosicao(); i++) {
