@@ -81,7 +81,7 @@ public class Venda {
 	public List<String> getListaVenda(){
 		List<String> lista = new ArrayList<>();
 		int aux = 0;
-		System.out.println();
+		//System.out.println();
 		
 		for (Produto x:carrinho) {
 			lista.add(x.getNome()+" - "+unid.get(aux));

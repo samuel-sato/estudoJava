@@ -34,21 +34,29 @@ public class Estoque {
 		return posicao;
 	}
 
-	public static void editarProduto(int id, Produto p) {
-
-		for (int i=0; i<posicao; i++) {
+	public static boolean editarProduto(int id, Produto p) {
+		int aux=0;
+		for (int i=0; i<=posicao-1; i++) {
 			if(produto[i].getID() == id) {
 				produto[i] = p;
+				aux++;
+				
 			}
-		}		
+		}
+		if(aux==0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 	
-	public static void adicionar(Produto p, int quantid) {
+	public static boolean adicionar(Produto p, int quantid) {
 		int aux=0;
 		if(posicao==0) {
 			Estoque.quantidade[posicao]+=quantid;
 			Estoque.produto[posicao]=p;
 			posicao++;
+			return true;
 		}else {
 			for (int i=0; i<posicao; i++) {
 				try {
@@ -63,17 +71,21 @@ public class Estoque {
 				Estoque.produto[posicao]=p;
 				Estoque.quantidade[posicao]=quantid;
 				posicao++;
+				return true;
+			}else {
+				return false;
 			}
 		}
 	}
 	public static boolean retirar(Produto p, int quantidade) {
 		int aux = 0; 
-		for (int i=0; i<posicao; i++) {
+		
+		for (int i=0; i<=posicao; i++) {
 			try {
 				if (Estoque.produto[i].equals(p)) {
 					if(Estoque.quantidade[i]>=quantidade) {
 						Estoque.quantidade[i]-=quantidade;
-						System.out.println("Produto retirado");
+						//System.out.println("Produto retirado");
 						aux++;
 						return true;
 		
@@ -86,7 +98,7 @@ public class Estoque {
 			} catch (NullPointerException ex) { 
 			}
 		}
-		if(aux != 0){
+		if(aux == 0){
 			JOptionPane.showMessageDialog(null, "Não tem esse produto");
 			return false;
 		}else {
@@ -114,7 +126,7 @@ public class Estoque {
 				//System.out.println("Produto: "+produto[i].getNome()+", Quantidade: "+Estoque.quantidade[i]);
 				try {
 					listaEstoque.add(Estoque.produto[i].getNome() + ", Quantidade: "+Estoque.quantidade[i]);
-					System.out.println(Estoque.produto[i].getNome() + ", Quantidade: "+Estoque.quantidade[i]);
+					//System.out.println(Estoque.produto[i].getNome() + ", Quantidade: "+Estoque.quantidade[i]);
 				} catch(NullPointerException ex) {
 					
 				}

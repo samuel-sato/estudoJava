@@ -28,26 +28,30 @@ public class DadoVenda {
 	}
 	
 	//Lista sem repetições
-	public static void adicionar(Venda v) {
+	public static boolean adicionar(Venda v) {
 		aux=0;
 		int i=0;
 		for (Venda x: listaVenda) {
 			if (x.equals(v)) {
-				System.out.println("Venda já adicionado");
+				//System.out.println("Venda já adicionado");
 				aux++;
 			}
 			if(x.getDataFormatada().equalsIgnoreCase(v.getDataFormatada())) {
 				i++;
 			}
-		} 
-		if(aux==0){
-			listaVenda.add(v);
-			System.out.println("venda adicionada");
-			nVenda++;
 		}
 		if(i==0) {
 			listaData.add(v.getDataFormatada());
 		}
+		if(aux==0){
+			listaVenda.add(v);
+			//System.out.println("venda adicionada");
+			nVenda++;
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	public static void editar(int pos, Venda v) {
 		listaVenda.remove(pos);
@@ -81,13 +85,13 @@ public class DadoVenda {
 			if(x.getID() == id) {
 				v = x;
 				i++;
-				System.out.println(x.getListaVenda());
+				//System.out.println(x.getListaVenda());
 			}
 		}
 		if(i==0) {
 			return null;
 		}else {
-			System.out.println((Venda) v);
+			//System.out.println((Venda) v);
 			return (Venda) v;
 		}
 		

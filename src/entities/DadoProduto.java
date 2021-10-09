@@ -22,7 +22,7 @@ public class DadoProduto {
 	}
 
 	//Lista sem repetições
-	public static void adicionar(Produto p) {
+	public static boolean adicionar(Produto p) {
 		//Estoque.adicionar(p);
 		aux=0;
 		for (Produto x: lista) {
@@ -36,6 +36,9 @@ public class DadoProduto {
 			//System.out.println("produto adicionado");
 			Estoque.adicionar(p, 0);
 			nProduto++;
+			return true;
+		}else {
+			return false;
 		}
 	}
 	public static void editar(int pos, Produto p) {

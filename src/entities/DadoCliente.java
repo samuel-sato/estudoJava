@@ -23,13 +23,12 @@ public class DadoCliente {
 		DadoCliente.aux=0;
 		for (Cliente x: DadoCliente.listaCliente) {
 			if (x.equals(c)) {
-				//System.out.println("Cliente já adicionado");
+				//cliente ja adicionado
 				DadoCliente.aux++;
 			}
 		} 
 		if(DadoCliente.aux==0){
 			listaCliente.add(c);
-			//System.out.println("cliente adicionado");
 			nCliente++;
 			return true;
 		} else {
@@ -38,10 +37,8 @@ public class DadoCliente {
 	}
 	public static void editar(int pos, Cliente c) {
 		listaCliente.remove(pos);
-		
 		listaCliente.add(pos, c);
-		
-		System.out.println("cliente alterado! ");
+		//System.out.println("cliente alterado! ");
 	}
 	public static void excluir(int i) {
 		listaCliente.remove(i);

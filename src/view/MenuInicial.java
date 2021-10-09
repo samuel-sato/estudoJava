@@ -143,13 +143,13 @@ public class MenuInicial implements ActionListener{
 		DadoVenda.adicionar(v2);
 		DadoVenda.adicionar(v3);
 		DadoVenda.adicionar(v4);
-		System.out.println(v1.getListaVenda().toString());
-		System.out.println(v2.getListaVenda().toString());
-		System.out.println(v3.getListaVenda().toString());
-		System.out.println(v4.getListaVenda().toString());
+		//System.out.println(v1.getListaVenda().toString());
+		//System.out.println(v2.getListaVenda().toString());
+		//System.out.println(v3.getListaVenda().toString());
+		//System.out.println(v4.getListaVenda().toString());
 		
 		
-		System.out.println();
+		//System.out.println();
 	}
 	
 	
