@@ -16,6 +16,11 @@ import entities.DadoCliente;
 import entities.DadoVenda;
 import modelo.Venda;
 
+/**
+ * Classe que exibe tela de edição dos dados de uma venda
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaEditarVenda implements ActionListener{
 	
 	private int ID;

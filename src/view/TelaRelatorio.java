@@ -12,6 +12,11 @@ import javax.swing.JScrollPane;
 
 import entities.DadoVenda;
 
+/**
+ * Classe que exibe tela de relatorio de vendas
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaRelatorio implements ActionListener {
 	
 	private static JFrame frame = new JFrame("Loja de Perfume");

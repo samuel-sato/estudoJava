@@ -1,5 +1,10 @@
 package modelo;
 
+/**
+ * Classe que modela Cliente
+ * @author samuel
+ * @version 1.0
+ */
 public class Cliente {
 
 	private String nome;

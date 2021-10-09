@@ -17,6 +17,11 @@ import entities.DadoProduto;
 import entities.Estoque;
 import modelo.Produto;
 
+/**
+ * Classe que exibe tela de Estoque, e lista de produtos em estoque
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaEstoque implements ActionListener, ListSelectionListener{
 	
 private static String[] num= {"0", "1", "2", "3", "4", "5", "6"};

@@ -1,5 +1,10 @@
 package modelo;
 
+/**
+ * Classe que modela o Produto Creme
+ * @author samuel
+ * @version 1.0
+ */
 public class Creme extends Produto{
 
 	private String tipoPele;

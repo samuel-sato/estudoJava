@@ -14,7 +14,11 @@ import javax.swing.event.ListSelectionListener;
 
 import entities.DadoCliente;
 import modelo.Cliente;
-
+/**
+ * Classe que exibe tela de adição ou edição de um cliente
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaAdicionarEditarCliente implements  ActionListener, ListSelectionListener {
 	
 	JLabel labelNome = new JLabel("Nome: ");

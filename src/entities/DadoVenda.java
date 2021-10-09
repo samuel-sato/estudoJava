@@ -5,6 +5,11 @@ import java.util.List;
 
 import modelo.Venda;
 
+/**
+ * Classe que armazena dados das Vendas
+ * @author samuel
+ * @version 1.0
+ */
 public class DadoVenda {
 	
 	private static int nVenda=0;

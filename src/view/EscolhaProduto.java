@@ -9,7 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
+/**
+ * Classe que exibe tela de escolha de produto para ser adicionado
+ * @author samuel
+ * @version 1.0
+ */
 public class EscolhaProduto implements  ActionListener, ListSelectionListener  {
 	
 	JFrame frame;

@@ -1,5 +1,10 @@
 package modelo;
 
+/**
+ * Classe que modela o Produto Sabonete
+ * @author samuel
+ * @version 1.0
+ */
 public class Sabonete extends Produto{
 
 	private String tipo;

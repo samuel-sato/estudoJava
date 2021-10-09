@@ -13,6 +13,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.Cliente;
 
+/**
+ * Classe que exibe tela com lista de clientes
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaCliente implements ActionListener, ListSelectionListener{
 	private int index;
 

@@ -21,7 +21,11 @@ import modelo.Kit;
 import modelo.Perfume;
 import modelo.Produto;
 import modelo.Sabonete;
-
+/**
+ * Classe que exibe tela adição ou edição de um produto
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaAdicionarEditarProduto implements ActionListener, ListSelectionListener{
 
 	JFrame frame = new JFrame();

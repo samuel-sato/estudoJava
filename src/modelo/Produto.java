@@ -2,6 +2,11 @@ package modelo;
 
 import java.util.Random;
 
+/**
+ * Classe abstrata que modela Produto
+ * @author samuel
+ * @version 1.0
+ */
 public abstract class Produto {
 	
 	protected int ID;

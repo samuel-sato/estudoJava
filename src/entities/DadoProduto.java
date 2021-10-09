@@ -3,6 +3,12 @@ package entities;
 
 import modelo.Produto;
 
+/**
+ * Classe que armazena dados dos Produtos
+ * @author samuel
+ * @version 1.0
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

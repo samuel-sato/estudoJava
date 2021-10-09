@@ -13,6 +13,11 @@ import javax.swing.JTextField;
 import entities.DadoCliente;
 import entities.DadoProduto;
 
+/**
+ * Classe que exibe tela de busca por nome de Cliente ou Produto
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaBusca implements  ActionListener {
 
 	private static String[] num= {"Produto", "Cliente"};

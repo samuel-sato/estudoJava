@@ -27,6 +27,11 @@ import modelo.Cliente;
 import modelo.Produto;
 import modelo.Venda;
 
+/**
+ * Classe que exibe tela de Venda
+ * @author samuel
+ * @version 1.0
+ */
 
 public class TelaVenda implements ActionListener, ListSelectionListener {
 	

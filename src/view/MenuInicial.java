@@ -17,7 +17,11 @@ import modelo.Creme;
 import modelo.Perfume;
 import modelo.Sabonete;
 import modelo.Venda;
-
+/**
+ * Classe que exibe tela que mostra menu Inicial
+ * @author samuel
+ * @version 1.0
+ */
 
 public class MenuInicial implements ActionListener{
 	

@@ -3,6 +3,11 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe que modela Produto Perfume
+ * @author samuel
+ * @version 1.0
+ */
 public class Perfume extends Produto{
 	private int volume;
 	private String genero;

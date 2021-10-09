@@ -8,7 +8,25 @@ import java.util.Random;
 
 import entities.Estoque;
 
+/**
+ * Classe que modela Venda
+ * @author samuel
+ * @version 1.0
+ */
+
 public class Venda {
+	/**
+	 * Classe apresenta metodos para manipulação dos dados de uma venda
+	 * Classe apresenta dois costrutores:
+	 * (1) Usado para fazer venda anonima e adicionar atributos separadamente
+	 * (2) Cria uma venda com todos os parametros 
+	 * @param Cliente é a pessoa que realiza a compra
+	 * @param p é o produto da venda
+	 * @param unidade é a quantidade dendida do produto p
+	 * @param formapagamento é o meio de pagamento da venda   
+	 * 
+	 */
+	
 	
 	private int ID;
 	private Cliente cliente;

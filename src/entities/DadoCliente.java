@@ -3,7 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Cliente;
 //import modelo.Produto;
-
+/**
+ * Classe que armazena dados dos Clientes
+ * @author samuel
+ * @version 1.0
+ */
 
 public class DadoCliente {
 

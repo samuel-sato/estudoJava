@@ -9,7 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 
 import entities.DadoVenda;
-
+/**
+ * Classe que exibe tela de vendas em uma data especifica
+ * @author samuel
+ * @version 1.0
+ */
 public class TelaFiltroVenda  implements ActionListener{
 
 	private static JFrame frame = new JFrame("Loja de Perfume");

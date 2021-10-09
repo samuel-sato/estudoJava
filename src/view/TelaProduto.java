@@ -18,7 +18,11 @@ import modelo.Creme;
 import modelo.Perfume;
 import modelo.Sabonete;
 
-
+/**
+ * Classe que exibe tela de produtos
+ * @author samuel
+ * @version 1.0
+ */
 
 public class TelaProduto implements ActionListener, ListSelectionListener{
 

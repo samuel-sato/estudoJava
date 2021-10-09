@@ -10,7 +10,11 @@ import modelo.Kit;
 import modelo.Perfume;
 import modelo.Produto;
 import modelo.Sabonete;
-
+/**
+ * Classe que modela Estoque
+ * @author samuel
+ * @version 1.0
+ */
 
 public class Estoque {
 	
