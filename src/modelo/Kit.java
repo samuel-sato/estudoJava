@@ -1,6 +1,6 @@
 package modelo;
 
-public class Kit extends Produto{
+public class Kit {
 
 	private Perfume perfume;
 	private Sabonete sabonete;
@@ -24,7 +24,7 @@ public class Kit extends Produto{
 	public void setCreme(Creme creme) {
 		this.creme = creme;
 	}
-	
+	/*
 	public Kit(Perfume perfume, Sabonete sabonete, Creme creme) {
 		super();
 		this.perfume = perfume;
@@ -36,5 +36,5 @@ public class Kit extends Produto{
 	public String toString() {
 		return "Nome: "+this.nome+", Marca: "+this.marca+", Preço: "+this.preco+", Descrição: "+this.descricao;
 	}
-	
+	*/
 }

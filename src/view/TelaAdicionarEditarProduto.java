@@ -269,10 +269,12 @@ public class TelaAdicionarEditarProduto implements ActionListener, ListSelection
         	frame.add(this.tTipoPele);
         	frame.add(this.tMassa);        	
         }
+        /*
         if(DadoProduto.getProduto(index).getClass() == Kit.class) {
         	
         	System.out.println(DadoProduto.getProduto(index).getClass());
         }
+        */
 
     	titulo.setBounds(100, 20, 200, 40);
     	titulo.setFont(new Font("Arial", Font.CENTER_BASELINE, 20));

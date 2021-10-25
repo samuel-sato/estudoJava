@@ -11,7 +11,16 @@ public class Sabonete extends Produto{
 	private int massa;
 	private int volume;
 	private String piramideOufativa;
-	
+	/*
+	public Sabonete(int iD, String nome, String marca, double preco, String descricao, String tipo, int massa,
+			int volume, String piramideOufativa) {
+		super(iD, nome, marca, preco, descricao);
+		this.tipo = tipo;
+		this.massa = massa;
+		this.volume = volume;
+		this.piramideOufativa = piramideOufativa;
+	}
+	*/
 	public String getTipo() {
 		return tipo;
 	}
@@ -38,6 +47,7 @@ public class Sabonete extends Produto{
 	public void setPiramideOufativa(String piramideOufativa) {
 		this.piramideOufativa = piramideOufativa;
 	}
+	
 	public Sabonete(String nome, String marca, double preco, String descricao,String tipo, int massa, String piramideOufativa) {
 		this.ID=Produto.geraID();
 		this.nome=nome;
@@ -49,6 +59,8 @@ public class Sabonete extends Produto{
 		//this.volume = volume;
 		this.piramideOufativa = piramideOufativa;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Nome: "+this.nome+"; Marca: "+this.marca+"; Preço: "+this.preco+"; Descrição: "
